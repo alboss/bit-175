@@ -1,11 +1,5 @@
 body {
   font-family: Helvetica, Arial, Sans-serif;
-  font-size: 14px;
-}
-#description {
-  border: 2px solid #999;
-  padding: 2em;
-  margin: 2em;
 }
 #lead {
   font-size: 1.2em;
