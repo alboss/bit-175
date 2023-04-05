@@ -1,7 +1,7 @@
 body {
   font-family: Helvetica, Arial, Sans-serif;
 }
-#lead {
+div#lead {
   font-size: 1.2em;
   color: #333;
 }
