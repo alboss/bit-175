@@ -11,12 +11,10 @@
       .transition,
       #jsaccordions ul li i:before,
       #jsaccordions ul li i:after,
-      p {
-        transition: all 0.25s ease-in-out;
-      }
+    
 
       .flipIn,
-        #jsaccordions ul li {
+      ul li {
         animation: flipdown 0.5s ease both;
       }
 
@@ -46,6 +44,7 @@
         left: 50%;
         margin: 90px 0; 
         transform: translate(-50%, 0);
+        box-shadow: 0 10px 0 0 #ff6873 inset;
         background-color: #fefffa;
         /*max-width: 450px;*/
         padding: 30px;
@@ -61,24 +60,18 @@
         }
       }
 
-      h3 {        
-        display: block;      
+      h3 {
+        font-size: 26px;
+        line-height: 34px;
+        font-weight: 300;
+        letter-spacing: 1px;
+        display: block;
+        background-color: #fefffa;
+        margin: 0;
         cursor: pointer;
       }
-    
-      p {
-        color: rgba(48, 69, 92, 0.8);
-        position: relative;
-        overflow: hidden;
-        max-height: 800px;
-        opacity: 1;
-        transform: translate(0, 0);
-        margin-top: 14px;
-        z-index: 2;
-        padding-left: 30px;
-      }
 
-        #jsaccordions ul {
+      ul {
         list-style: none;
         perspective: 900;
         padding: 0;
@@ -86,21 +79,16 @@
       }
         #jsaccordions ul li {
         position: relative;
-        margin: 2em;
+        padding: 0;
+        margin: 0;
         padding-bottom: 4px;
-        padding-top: 2em;
-        padding-left: 2em;
-        border: 1px solid #eee;
-        border-radius: 10px;
-      }
-      #jsaccordions ul li:first-child:hover {
-       
-        background-color: #ffe77aff;
+        padding-top: 18px;
+        border-top: 1px dotted #dce7eb;
       }
         #jsaccordions ul li:nth-of-type(1) {
         animation-delay: 0.5s;
       }
-      ul li:nth-of-type(2) {
+        #jsaccordions ul li:nth-of-type(2) {
         animation-delay: 0.75s;
       }
         #jsaccordions ul li:nth-of-type(3) {
@@ -109,27 +97,27 @@
         #jsaccordions ul li:last-of-type {
         padding-bottom: 0;
       }
-        #jsaccordions ul li i {
+       #jsaccordions  ul li i {
         position: absolute;
         transform: translate(-6px, 0);
-        margin-top: 1em;
-        right: 2em;
+        margin-top: 16px;
+        right: 0;
       }
-        #jsaccordions ul li i:before,
-        #jsaccordions ul li i:after {
+      ul li i:before,
+      ul li i:after {
         content: "";
         position: absolute;
-        background-color:#563e6e;
+        background-color: #ff6873;
         width: 3px;
         height: 9px;
       }
-        #jsaccordions ul li i:before {
+      ul li i:before {
         transform: translate(-2px, 0) rotate(45deg);
       }
-        #jsaccordions ul li i:after {
+      ul li i:after {
         transform: translate(2px, 0) rotate(-45deg);
       }
-        #jsaccordions ul li input[type="checkbox"] {
+      ul li input[type="checkbox"] {
         position: absolute;
         cursor: pointer;
         width: 100%;
@@ -137,16 +125,16 @@
         z-index: 1;
         opacity: 0;
       }
-        #jsaccordions ul li input[type="checkbox"]:checked ~ p {
+      ul li input[type="checkbox"]:checked ~ p {
         margin-top: 0;
         max-height: 0;
         opacity: 0;
         transform: translate(0, 50%);
       }
-        #jsaccordions ul li input[type="checkbox"]:checked ~ i:before {
+      ul li input[type="checkbox"]:checked ~ i:before {
         transform: translate(2px, 0) rotate(45deg);
       }
-        #jsaccordions ul li input[type="checkbox"]:checked ~ i:after {
+      ul li input[type="checkbox"]:checked ~ i:after {
         transform: translate(-2px, 0) rotate(-45deg);
       }
 
@@ -180,7 +168,6 @@
         margin: 0 auto;
         padding: 0 5vh;
       }
-
     </style>
   </head>
   <body>
@@ -217,6 +204,7 @@
           <h3 class="jsaccordion">
             What kind of content would I use this for?
           </h3>
+
           <p>
             There are all kinds of uses. It's often used for an FAQ (frequently
             asked questions), a troubleshooting guide, or a glossary.

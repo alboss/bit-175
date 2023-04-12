@@ -46,6 +46,7 @@
         left: 50%;
         margin: 90px 0; 
         transform: translate(-50%, 0);
+        box-shadow: 0 10px 0 0 #ff6873 inset;
         background-color: #fefffa;
         /*max-width: 450px;*/
         padding: 30px;
@@ -61,11 +62,17 @@
         }
       }
 
-      h3 {        
-        display: block;      
+      h3 {
+        padding: 20px 30px;
+        display: block;
+        background-color: #fefffa;
+        margin: 0;
         cursor: pointer;
       }
-    
+      h3:hover {
+        background-color: #ffe77aff;
+      }
+
       p {
         color: rgba(48, 69, 92, 0.8);
         position: relative;
@@ -75,7 +82,6 @@
         transform: translate(0, 0);
         margin-top: 14px;
         z-index: 2;
-        padding-left: 30px;
       }
 
         #jsaccordions ul {
@@ -86,16 +92,12 @@
       }
         #jsaccordions ul li {
         position: relative;
+        padding: 20px 30px;
         margin: 2em;
         padding-bottom: 4px;
-        padding-top: 2em;
-        padding-left: 2em;
+        padding-top: 18px;
         border: 1px solid #eee;
-        border-radius: 10px;
-      }
-      #jsaccordions ul li:first-child:hover {
-       
-        background-color: #ffe77aff;
+        
       }
         #jsaccordions ul li:nth-of-type(1) {
         animation-delay: 0.5s;
@@ -112,8 +114,8 @@
         #jsaccordions ul li i {
         position: absolute;
         transform: translate(-6px, 0);
-        margin-top: 1em;
-        right: 2em;
+        margin-top: 16px;
+        right: 0;
       }
         #jsaccordions ul li i:before,
         #jsaccordions ul li i:after {
@@ -122,6 +124,7 @@
         background-color:#563e6e;
         width: 3px;
         height: 9px;
+      
       }
         #jsaccordions ul li i:before {
         transform: translate(-2px, 0) rotate(45deg);
@@ -180,7 +183,6 @@
         margin: 0 auto;
         padding: 0 5vh;
       }
-
     </style>
   </head>
   <body>
@@ -217,6 +219,7 @@
           <h3 class="jsaccordion">
             What kind of content would I use this for?
           </h3>
+
           <p>
             There are all kinds of uses. It's often used for an FAQ (frequently
             asked questions), a troubleshooting guide, or a glossary.
