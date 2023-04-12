@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/docs/styles/styles.css" rel="stylesheet" type="text/css" />
+    <base target="example-page" />
+
+    <!-- Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"></script>
+
+    <!-- CSS for this jQuery code -->
+    <style>
+      .container {
+        width: 100%;
+        max-width: 700px;
+        min-width: 300px;
+        margin: 0 auto;
+        padding: 0 5vh;
+      }
+
+      /* accordion-1 */
+      .accordion-1 {
+        position: relative;
+        box-shadow: 0px 1px 7px #dbdbdb;
+      }
+
+      .accordion-1 .head {
+        background-color: #ffffff;
+        color: #563e6e;
+        padding: 20px 30px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .accordion-1 .arrow {
+        color: #563e6e;
+        font-size: 60px;
+        transition: 0.25s ease;
+        opacity: 0.3;
+        transform: rotate(-90deg);
+      }
+
+      .accordion-1 .head:hover .arrow {
+        opacity: 1;
+      }
+
+      .accordion-1 .head:hover,
+      #accordion-1 .active {
+        background-color: #ffe77aff;
+      }
+
+      .accordion-1 .arrow-animate {
+        transform: rotate(-180deg);
+        opacity: 1;
+      }
+
+      .accordion-1 .content {
+        background-color: #ffffff;
+        display: none;
+        padding: 20px 30px;
+        color: #333333;
+      }
+    </style>
+    <title>jQuery expanding text</title>
+  </head>
+  <body>
+    <nav class="top">
+      <ul>
+        <li><a href="jquery-accordion.html">jQuery</a></li>
+        <li><a href="javascript-accordion.html">JavaScript</a></li>
+        <li><a href="bootstrap-accordion.html">Bootstrap</a></li>
+        <li><a href="css-accordion.html">CSS</a></li>
+        <li><a href="html-accordion.html">HTML</a></li>
+      </ul>
+    </nav>
+    <h1>Expanding text</h1>
+    <h2>jQuery</h2>
+    <section id="jsaccordions" class="container">
+      <div class="accordion-1">
+        <div class="head">
+          <h3>What is an accordion?</h3>
+          <i class="fas fa-angle-down arrow"></i>
+        </div>
+        <div class="content">
+          <p>
+            An accordion is a kind of expanding text, used to show (and hide)
+            HTML content. It often displays as a list of items stacked on top of
+            one another. When clicked on (or triggered by a keyboard interaction
+            or screen reader), these headers will either reveal or hide
+            associated content.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-1">
+        <div class="head">
+          <h3>What kind of content would I use this for?</h3>
+          <i class="fas fa-angle-down arrow"></i>
+        </div>
+        <div class="content">
+          <p>
+            There are all kinds of uses. It's often used for an FAQ (frequently
+            asked questions), a troubleshooting guide, or a glossary.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-1">
+        <div class="head">
+          <h3>Why would I use this?</h3>
+          <i class="fas fa-angle-down arrow"></i>
+        </div>
+        <div class="content">
+          <p>
+            It's often used to save space, to let people scan just the
+            categories or questions, find the one they want, and then expand it
+            to see the answer. They don't have to scroll through a bunch of
+            content that's not pertinent to what they're trying to do.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!--scripts-->
+    <!-- script for JS accordion-->
+    <script>
+      $(".head").click(function () {
+        $(this).toggleClass("active");
+        $(this).parent().find(".arrow").toggleClass("arrow-animate");
+        $(this).parent().find(".content").slideToggle(280);
+      });
+
+      // icon from Font Awesome was used in accordion-1
+    </script>
+    <!-- end script for JS accordion-->
+  </body>
+</html>

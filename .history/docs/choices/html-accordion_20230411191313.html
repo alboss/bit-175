@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/docs/styles/styles.css" rel="stylesheet" type="text/css" />
+    <base target="example-page" />
+
+    <title>HTML expanding text</title>
+    <style>
+      /* not necessary, just here to make it look like the others */
+      .container {
+        width: 100%;
+        max-width: 700px;
+        min-width: 300px;
+        margin: 0 auto;
+        padding: 0 5vh;
+      }
+      details {
+        padding: 20px 30px;
+      }
+      summary {
+        font-size: 1.2em;
+        background-color: #eee;
+        color: #563e6e;
+        padding: 20px 30px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        box-shadow: 0px 1px 7px #dbdbdb;
+      }
+      summary:hover {
+        background-color: #ffe77aff;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top">
+      <ul>
+        <li><a href="jquery-accordion.html">jQuery</a></li>
+        <li><a href="javascript-accordion.html">JavaScript</a></li>
+        <li><a href="bootstrap-accordion.html">Bootstrap</a></li>
+        <li><a href="css-accordion.html">CSS</a></li>
+        <li><a href="html-accordion.html">HTML</a></li>
+      </ul>
+    </nav>
+    <h1>Expanding text</h1>
+    <h2>HTML</h2>
+    <section id="jsaccordions" class="container">
+      <details>
+        <summary>What is an accordion?</summary>
+        <div class="jspanel">
+          <p>
+            An accordion is a kind of expanding text, used to show (and hide)
+            HTML content. It often displays as a list of items stacked on top of
+            one another. When clicked on (or triggered by a keyboard interaction
+            or screen reader), these headers will either reveal or hide
+            associated content.
+          </p>
+        </div>
+      </details>
+      <details>
+        <summary>What kind of content would I use this for?</summary>
+        <div class="jspanel">
+          <p>
+            There are all kinds of uses. It's often used for an FAQ (frequently
+            asked questions), a troubleshooting guide, or a glossary.
+          </p>
+        </div>
+      </details>
+      <details>
+        <summary>Why would I use this?</summary>
+        <div class="jspanel">
+          <p>
+            It's often used to save space, to let people scan just the
+            categories or questions, find the one they want, and then expand it
+            to see the answer. They don't have to scroll through a bunch of
+            content that's not pertinent to what they're trying to do.
+          </p>
+        </div>
+      </details>
+    </section>
+
+    <!-- no scripts-->
+  </body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/docs/styles/styles.css" rel="stylesheet" type="text/css" />
+    <base target="example-page" />
+
+    <!-- style JS accordion-->
+    <style>
+      .container {
+        width: 100%;
+        max-width: 700px;
+        min-width: 300px;
+        margin: 0 auto;
+        padding: 0 5vh;
+      }
+      .accordion-1 {
+        position: relative;
+        box-shadow: 0px 1px 7px #dbdbdb;
+      }
+      /* Style the buttons that are used to open and close the accordion panel */
+      .jsaccordion {
+        background-color: #eee;
+        color: #563e6e;
+        padding: 20px 30px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+      .active,
+      .jsaccordion:hover {
+        background-color: #ffe77aff;
+      }
+      /* Style the accordion panel. Note: hidden by default */
+      .jspanel {
+        padding: 0px 30px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        /* add a transition to slide contents down */
+        transition: max-height 0.2s ease-out;
+      }
+      .jsaccordion:after {
+        content: ">"; /* Unicode character for "greater than" sign (>) */
+        font-size: 20px;
+        color: #777;
+        float: right;
+        margin-left: 5px;
+      }
+
+      .active:after {
+        color: #8000ff;
+        font-size: 20px;
+        transition: 0.25s ease;
+        opacity: 0.6;
+        transform: rotate(90deg);
+      }
+    </style>
+    <!-- end style for JS accordion-->
+
+    <title>JavaScript expanding text</title>
+  </head>
+  <body>
+    <nav class="top">
+      <ul>
+        <li><a href="jquery-accordion.html">jQuery</a></li>
+        <li><a href="javascript-accordion.html">JavaScript</a></li>
+        <li><a href="bootstrap-accordion.html">Bootstrap</a></li>
+        <li><a href="css-accordion.html">CSS</a></li>
+        <li><a href="html-accordion.html">HTML</a></li>
+      </ul>
+    </nav>
+    <h1>Expanding text</h1>
+    <h2>JavaScript</h2>
+    <div class="container">
+      <section id="jsaccordions">
+        <div class="accordion1">
+          <h3 class="jsaccordion">What is an accordion?</h3>
+          <div class="jspanel">
+            <p>
+              An accordion is a kind of expanding text, used to show (and hide)
+              HTML content. It often displays as a list of items stacked on top
+              of one another. When clicked on (or triggered by a keyboard
+              interaction or screen reader), these headers will either reveal or
+              hide associated content.
+            </p>
+          </div>
+        </div>
+        <h3 class="jsaccordion">What kind of content would I use this for?</h3>
+        <div class="jspanel">
+          <p>
+            There are all kinds of uses. It's often used for an FAQ (frequently
+            asked questions), a troubleshooting guide, or a glossary.
+          </p>
+        </div>
+
+        <h3 class="jsaccordion">Why would I use this?</h3>
+        <div class="jspanel">
+          <p>
+            It's often used to save space, to let people scan just the
+            categories or questions, find the one they want, and then expand it
+            to see the answer. They don't have to scroll through a bunch of
+            content that's not pertinent to what they're trying to do.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!--scripts-->
+    <!-- script for JS accordion-->
+    <script>
+      var acc = document.getElementsByClassName("jsaccordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+          this.classList.toggle("active");
+
+          /* Toggle between hiding and showing the active panel */
+          var jspanel = this.nextElementSibling;
+          if (jspanel.style.maxHeight) {
+            jspanel.style.maxHeight = null;
+          } else {
+            jspanel.style.maxHeight = jspanel.scrollHeight + "px";
+          }
+        });
+      }
+    </script>
+    <!-- end script for JS accordion-->
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/docs/styles/styles.css" rel="stylesheet" type="text/css" />
+    <base target="example-page" />
+
+    <!-- Jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"></script>
+
+    <title>jQuery expanding text</title>
+  </head>
+  <body>
+    <nav class="top">
+      <ul>
+        <li><a href="jquery-accordion.html">jQuery</a></li>
+        <li><a href="javascript-accordion.html">JavaScript</a></li>
+        <li><a href="bootstrap-accordion.html">Bootstrap</a></li>
+        <li><a href="css-accordion.html">CSS</a></li>
+        <li><a href="html-accordion.html">HTML</a></li>
+      </ul>
+    </nav>
+    <h1>Expanding text</h1>
+    <h2>jQuery</h2>
+    <section id="jsaccordions" class="container">
+      <div class="accordion-1">
+        <div class="head">
+          <h3>What is an accordion?</h3>
+          <i class="fas fa-angle-down arrow"></i>
+        </div>
+        <div class="content">
+          <p>
+            An accordion is a kind of expanding text, used to show (and hide)
+            HTML content. It often displays as a list of items stacked on top of
+            one another. When clicked on (or triggered by a keyboard interaction
+            or screen reader), these headers will either reveal or hide
+            associated content.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-1">
+        <div class="head">
+          <h3>What kind of content would I use this for?</h3>
+          <i class="fas fa-angle-down arrow"></i>
+        </div>
+        <div class="content">
+          <p>
+            There are all kinds of uses. It's often used for an FAQ (frequently
+            asked questions), a troubleshooting guide, or a glossary.
+          </p>
+        </div>
+      </div>
+      <div class="accordion-1">
+        <div class="head">
+          <h3>Why would I use this?</h3>
+          <i class="fas fa-angle-down arrow"></i>
+        </div>
+        <div class="content">
+          <p>
+            It's often used to save space, to let people scan just the
+            categories or questions, find the one they want, and then expand it
+            to see the answer. They don't have to scroll through a bunch of
+            content that's not pertinent to what they're trying to do.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!--scripts-->
+    <!-- script for JS accordion-->
+    <script>
+      var acc = document.getElementsByClassName("jsaccordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+          this.classList.toggle("active");
+
+          /* Toggle between hiding and showing the active panel */
+          var jspanel = this.nextElementSibling;
+          if (jspanel.style.maxHeight) {
+            jspanel.style.maxHeight = null;
+          } else {
+            jspanel.style.maxHeight = jspanel.scrollHeight + "px";
+          }
+        });
+      }
+    </script>
+    <!-- end script for JS accordion-->
+  </body>
+</html>

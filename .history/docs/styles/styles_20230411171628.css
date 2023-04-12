@@ -1,7 +1,6 @@
 body {
   font-family: Helvetica, Arial, Sans-serif;
   font-size: 14px;
-  padding: 2em;
 }
 #description {
   border: 2px solid #999;
@@ -23,13 +22,17 @@ nav.top ul {
 nav.top ul li {
   margin: 0px;
   padding: 10px 25px;
-  border-inline: 2px solid #333;
-  margin-left: -2px;
+  border: 2px solid #666;
+  border-collapse: collapse;
   background-color: cornsilk;
   list-style: none;
 }
 nav.top ul li:hover {
+  margin: 0px;
+  padding: 10px 25px;
   background-color: blanchedalmond;
+  border: 2px solid #333;
+  border-collapse: collapse;
   list-style: none;
   display: block;
 }
