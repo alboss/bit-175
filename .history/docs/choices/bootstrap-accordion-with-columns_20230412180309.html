@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous" />
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"></script>
+    <link href="../styles/styles.css" rel="stylesheet" type="text/css" />
+    <base target="example-page" />
+
+    <title>Expanding text - Bootstrap</title>
+    <style>
+      /* just to give this example consistency with other examples */
+      .accordion-container {
+        width: 100%;
+        max-width: 700px;
+        min-width: 300px;
+        margin: 0 auto;
+      }
+      #jsaccordions, #jsaccordions.accordion-container .accordion-item .accordion-header button, #jsaccordions.accordion-container .accordion .accordion-item { background-color: azure;}
+      #jsaccordions2, #jsaccordions2.accordion-container .accordion-item .accordion-header button, #jsaccordions2.accordion-container .accordion .accordion-item { background-color:bisque;}
+      #jsaccordions3, #jsaccordions3.accordion-container .accordion-item .accordion-header button, #jsaccordions3.accordion-container .accordion .accordion-item { background-color:darkkhaki;}
+      #jsaccordions4, #jsaccordions4.accordion-container .accordion-item .accordion-header button, #jsaccordions4.accordion-container .accordion .accordion-item { background-color:lightsalmon;}
+      #jsaccordions* {padding: 1em;}
+ </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="top">
+        <ul>
+          <li><a href="jquery-accordion.html">jQuery</a></li>
+          <li><a href="javascript-accordion.html">JavaScript</a></li>
+          <li><a href="bootstrap-accordion.html">Bootstrap</a></li>
+          <li><a href="css-accordion.html">CSS</a></li>
+          <li><a href="html-accordion.html">HTML</a></li>
+        </ul>
+      </nav>
+      <h1>Expanding text</h1>
+      <h2>Multiple lists, in multiple columns, via Bootstrap</h2>
+      <p>In this example I made two rows of two columns each.</p>
+      <div class="container">
+        <div class="row">
+          <!-- row one column one -->
+          <div class="col-md-6 mb-3">
+            <section id="jsaccordions" class="accordion-container">
+              <h3>List one</h3>
+              <div class="accordion">
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingOne">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="false"
+                      aria-controls="collapseOne">
+                      What is an accordion?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        An accordion is a kind of expanding text, used to show
+                        (and hide) HTML content. It often displays as a list of
+                        items stacked on top of one another. When clicked on (or
+                        triggered by a keyboard interaction or screen reader),
+                        these headers will either reveal or hide associated
+                        content.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingTwo">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo">
+                      What kind of content would I use this for?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseTwo"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        There are all kinds of uses. It's often used for an FAQ
+                        (frequently asked questions), a troubleshooting guide,
+                        or a glossary.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingThree">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree">
+                      Why would I use this?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseThree"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        It's often used to save space, to let people scan just
+                        the categories or questions, find the one they want, and
+                        then expand it to see the answer. They don't have to
+                        scroll through a bunch of content that's not pertinent
+                        to what they're trying to do.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- end list one -->
+          <!-- list two -->
+          <div class="col-md-6 mb-3">
+            <section id="jsaccordions2" class="accordion-container">
+              <h3>List two</h3>
+              <div class="accordion">
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingOne2">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne2"
+                      aria-expanded="false"
+                      aria-controls="collapseOne2">
+                      What else is an accordion?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseOne2"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingOne2"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        Accordions are a family of box-shaped musical instruments of the bellows-driven free reed aerophone type, colloquially referred to as a squeezebox.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingTwo2">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo2"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo2">
+                      What kind of content would I use this kind of accordion for?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseTwo2"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingTwo2"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        The accordion is used in popular, dance-pop, folk, cajun, zydeco, jazz, and klezmer music, and in both solo and orchestral performances of classical music.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingThree2">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree2"
+                      aria-expanded="false"
+                      aria-controls="collapseThree2">
+                      Why would I use this kind of accordion?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseThree2"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingThree2"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        Maybe because you're an accordionist?
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingThree2plus">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree2plus"
+                      aria-expanded="false"
+                      aria-controls="collapseThree2plus">
+                      What's the point?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseThree2plus"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingThree2plus"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        According to the Internets, the essential characteristic of the accordion is to combine in one instrument a melody section, also called the diskant, usually on the right-hand manual, with an accompaniment or Basso continuo functionality on the left-hand.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- end list two -->
+
+          <!-- list three -->
+          <div class="col-md-6">
+            <section id="jsaccordions3" class="accordion-container">
+              <h3>List 3</h3>
+              <div class="accordion">
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingOne3">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne3"
+                      aria-expanded="false"
+                      aria-controls="collapseOne3">
+                     What is the capital of Japan?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseOne3"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingOne3"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        The capital of Japan is Tokyo.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingTwo3">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo3"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo3">
+                      How many planets are in our solar system?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseTwo3"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingTwo3"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        There are eight planets in our solar system: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingThree3">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree3"
+                      aria-expanded="false"
+                      aria-controls="collapseThree3">
+                      What is the boiling point of water?
+                    </button>
+                  </h4>
+                  <div
+                    id="collapseThree3"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingThree3"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        The boiling point of water is 100 degrees Celsius or 212 degrees Fahrenheit at sea level.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- end list three -->
+          <!-- list four -->
+          <div class="col-md-6">
+            <section id="jsaccordions4" class="accordion-container">
+              <h3>List 4</h3>
+              <div class="accordion">
+                <div class="accordion-item">
+                  <h4 class="accordion-header" id="headingOne4">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne4"
+                      aria-expanded="false"
+                      aria-controls="collapseOne4">
+                      What is the difference between a herbivore and a carnivore?
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseOne4"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingOne4"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        A herbivore is an animal that primarily eats plants, while a carnivore is an animal that primarily eats other animals.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3 class="accordion-header" id="headingTwo4">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo4"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo4">
+                      What is the chemical symbol for gold?
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseTwo4"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingTwo4"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        The chemical symbol for gold is Au.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3 class="accordion-header" id="headingThree4">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree4"
+                      aria-expanded="false"
+                      aria-controls="collapseThree4">
+                      What is the highest mountain in the world?
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseThree4"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingThree4"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>
+                        The highest mountain in the world is Mount Everest, which is located in the Himalayas on the border between Nepal and Tibet.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- end list 4 -->
+          </div>
+          <!-- end row -->
+        </div>
+      </div>
+    </div>
+    <!-- no scripts needed -->
+  </body>
+</html>
