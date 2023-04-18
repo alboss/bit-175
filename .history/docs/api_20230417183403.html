@@ -18,7 +18,7 @@
 
     <script>
       const apiKey = "42f828591e71409c9ca33a3d8fc36c37";
-      const response = fetch("https://rawg.io/api/games/?key=${apiKey}");
+      const response = fetch("https://rawg.io/api/games/?key=${apiKey}")
       /*const settings = {
         //fetch('https://rawg.io/api/games/?key=42f828591e71409c9ca33a3d8fc36c37')
         async: true,
@@ -33,7 +33,7 @@
           "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com",
         },
       };*/
-      $.ajax(response).done(function (response) {
+      $.ajax(settings).done(function (response) {
         console.log(response);
       });
     </script>
