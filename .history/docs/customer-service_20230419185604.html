@@ -17,11 +17,11 @@
         margin-top: 1em;
         padding: 1.1em;
       }
-      textarea {
-        margin-left: 1em;
-        margin-top: 0;
-        padding: 1.1em;
-      }
+textarea {
+    margin-left: 1em;
+    margin-top:0;
+    padding: 1.1em;
+}
       #email-entry:hover {
         opacity: 0%;
         transition: opacity 1s;
@@ -74,8 +74,7 @@
       <div id="software">
         <p>What kind of operating system and software are you using?</p>
         <textarea
-          cols="50"
-          rows="5"
+          cols="50" rows="5"
           id="sw"
           onfocus="javascript:changeTitle()"></textarea>
       </div>
@@ -130,28 +129,21 @@
       }
 
       function fixAge() {
-        var age1 = Number(age.value);
-        if (male.checked) {
-          age1 = age1 -= 10;
+        let age1 = age.value;
+        if ((document.getElementById("mr").checked = true)) {
+          age1 = age1 - 10;
           age.value = age1;
-          alert(
-            "We don't serve children. (They're high in cholesterol.) Seriously, go get a grownup."
-          );
+          // subtract 10 years and call the customer a child
         }
-        if (female.checked) {
-          age1 = age1 += 10;
-          age.value = age1;
-          alert("Gee, you're old!");
+        if ((document.getElementById("ms").checked = true)) {
+          age1 = age1 + 10;
+            age.value = age1;
+          // alert "gee you're old"
         }
         return;
       }
-      // More ideas:
-      // Replace the email field CSS animation with something more sophisticated
-      // On focus in some field, move focus to another field so they type in the wrong place
-      // Offer a dropdown of problems but change the selected value to something saying it's the user's own fault 
-      // In a new textarea, reverse background and foreground colors with every keystroke
-      // Have fun! 
-      // 
+      // on focus in email, move focus to another field
+      //
     </script>
   </body>
 </html>
