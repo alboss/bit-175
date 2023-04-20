@@ -45,7 +45,7 @@
 
       <div id="software">
         <p>What kind of operating system and software are you using?</p>
-        <textarea cols="50" id="sw" onfocus="javascript:changeTitle()"></textarea>
+        <textarea cols="50" id="sw" onfocus="changeTitle()"></textarea>
       </div>
     </form>
     <script>
@@ -90,16 +90,11 @@
 
       function fixAge() {
         let age1 = document.getElementById("age").value;
-        if ((document.getElementById("mr").checked = true)) {
-          age1 = age1 - 10;
-          // subtract 10 years and call the customer a child
-        }
-        if ((document.getElementById("ms").checked = true)) {
-          age1 = age1 + 10;
-
-          // alert "gee you're old"
-        }
-        return;
+         (document.getElementById("mr").checked = true) 
+         age1 = age1 -10;
+         
+      }
+        
       }
     </script>
   </body>
