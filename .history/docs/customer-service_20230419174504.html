@@ -13,31 +13,14 @@
       p {
         padding: 1.1em;
       }
-      input {
+      input,
+      textarea {
         margin-top: 1em;
         padding: 1.1em;
       }
-textarea {
-    margin-left: 1em;
-    margin-top:0;
-    padding: 1.1em;
-}
-      #email-entry:hover {
-        opacity: 0%;
-        transition: opacity 1s;
-        animation-duration: 3s;
-        animation-name: slideout;
-      }
-      @keyframes slideout {
-        from {
-          margin-left: 0%;
-          width: 100%;
-        }
-
-        to {
-          margin-left: 100%;
-          width: 300%;
-        }
+      #email:hover {
+        margin-left: 300px;
+        margin-top: 24px;
       }
     </style>
     <title>Customer Service</title>
@@ -57,7 +40,7 @@ textarea {
       <p>
         Your last name:
         <br />
-        <input id="last-name" size="30" onblur="javascript:swapNames()" />
+        <input id="last-name" size="30" />
       </p>
       <p>
         Title
@@ -71,59 +54,62 @@ textarea {
         <input type="radio" id="coach" name="title" value="Coach" />
         <label for="coach" id="coach-label">Coach</label>
       </p>
-      <div id="software">
-        <p>What kind of operating system and software are you using?</p>
-        <textarea
-          cols="50" rows="5"
-          id="sw"
-          onfocus="javascript:changeTitle()"></textarea>
-      </div>
       <p>
         <label for="age">Age</label>
         <br />
         <input type="text" id="age" onblur="javascript:fixAge()" />
       </p>
-      <p id="email-entry">
+      <p>
         <label for="email">Email address</label>
         <br />
         <input type="text" id="email" size="30" />
       </p>
+      <div id="software">
+        <p>What kind of operating system and software are you using?</p>
+        <textarea
+          cols="50"
+          id="sw"
+          onfocus="javascript:changeTitle()"></textarea>
+      </div>
     </form>
     <script>
-      let focuscounter = 1;
-      const male = document.getElementById("mr");
-      const female = document.getElementById("ms");
-      const thecoach = document.getElementById("coach");
-      const firstname = document.getElementById("first-name");
-      const lastname = document.getElementById("last-name");
-      function swapNames() {
-        let first = firstname.value;
-        let last = lastname.value;
-        firstname.value = last;
-        lastname.value = first;
-        return;
-      }
       function changeTitle() {
-        if (male.checked && focuscounter == 1) {
-          focuscounter++;
-
-          alert("Neener neener, you're a girl!");
-          female.checked = true;
-          document.getElementById("sw").focus();
-          return;
-        } else if (female.checked && focuscounter == 1) {
-          focuscounter++;
-          male.checked = true;
-          alert("You don't look like a girl to me!");
-          document.getElementById("sw").focus();
-          return;
-        } else if (thecoach.checked && focuscounter == 1) {
-          focuscounter++;
-          alert("Coach? Seriously? You're a fossil!");
-          document.getElementById("coach-label").innerHTML = "Fossil";
-          document.getElementById("sw").focus();
-          return;
-        }
+        let focuscounter = 1;
+        //alert(focuscounter);
+        if (
+          (document.getElementById("mr").checked = true) &&
+          focuscounter == 1
+        ) {
+                document.getElementById("mr").checked = false;
+                document.getElementById("ms").checked = true;
+                alert("Neener neener, you're a girl!");
+                //document.getElementById("sw").focus();
+                focuscounter++;
+                console.log("focuscounter is " +focuscounter);
+                return;
+            } 
+        else if (
+          (document.getElementById("ms").checked = true) &&
+          focuscounter == 1
+            ) {
+                document.getElementById("ms").checked = false;
+                document.getElementById("mr").checked = true;
+                alert("You don't look like a girl to me!");
+                document.getElementById("sw").focus();
+                focuscounter++;
+                console.log(focuscounter);
+                return;
+            } 
+        else if (
+          (document.getElementById("coach").checked = true) &&
+          focuscounter == 1
+            ) {
+            document.getElementById("coach-label").innerHTML = Fossil;
+            document.getElementById("sw").focus();
+            focuscounter++;
+            console.log(focuscounter);
+            return;
+            }
         return;
       }
 

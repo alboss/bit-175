@@ -13,31 +13,22 @@
       p {
         padding: 1.1em;
       }
-      input {
+      input,
+      textarea {
         margin-top: 1em;
         padding: 1.1em;
       }
-textarea {
-    margin-left: 1em;
-    margin-top:0;
-    padding: 1.1em;
-}
+      #email-entry {
+        margin: 2em;
+        margin-right: 0;
+        display: block;
+      }
       #email-entry:hover {
+        position: relative;
+        margin-left: 300px;
+        margin-top: 24px;
         opacity: 0%;
         transition: opacity 1s;
-        animation-duration: 3s;
-        animation-name: slideout;
-      }
-      @keyframes slideout {
-        from {
-          margin-left: 0%;
-          width: 100%;
-        }
-
-        to {
-          margin-left: 100%;
-          width: 300%;
-        }
       }
     </style>
     <title>Customer Service</title>
@@ -74,7 +65,7 @@ textarea {
       <div id="software">
         <p>What kind of operating system and software are you using?</p>
         <textarea
-          cols="50" rows="5"
+          cols="50"
           id="sw"
           onfocus="javascript:changeTitle()"></textarea>
       </div>
