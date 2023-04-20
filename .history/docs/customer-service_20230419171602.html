@@ -5,22 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
-    <style>
-      body {
-        background-color: lightcoral;
-        padding: 1em;
-      }
-      p {
-        padding: 2em;
-      }
-      input, textarea {
-        margin-top: 1em;
-      }
-      #email:hover {
-        margin-left: 300px;
-        margin-top: 24px;
-      }
-    </style>
+
     <title>Customer Service</title>
   </head>
   <body>
@@ -60,14 +45,11 @@
       <p>
         <label for="email">Email address</label>
         <br />
-        <input type="text" id="email" size="30" />
+        <input type="text" id="email" onblur="javascript:fixAge()" />
       </p>
       <div id="software">
         <p>What kind of operating system and software are you using?</p>
-        <textarea
-          cols="50"
-          id="sw"
-          onfocus="javascript:changeTitle()"></textarea>
+        <textarea cols="50" id="sw" onfocus="javascript:changeTitle()"></textarea>
       </div>
     </form>
     <script>
@@ -123,8 +105,6 @@
         }
         return;
       }
-      // on focus in email, move focus to another field
-      
     </script>
   </body>
 </html>
