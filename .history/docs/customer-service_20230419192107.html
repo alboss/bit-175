@@ -25,11 +25,7 @@
         margin-top: 0;
         padding: 1.1em;
       }
-      #title { 
-        margin-left: 2em;
-        margin-top:-2em;
-        margin-bottom: -2em;
-    }
+      #title {}
       #email-entry:hover {
         opacity: 0%;
         transition: opacity 1s;
@@ -70,8 +66,8 @@
 
       <p>
         <label for="title">Title</label>
-        
-        <div id="title">
+        <br />
+        <span id="title">
           <input type="radio" id="mr" name="title" value="Mr." />
           <label for="mr">Mr.</label>
           <br />
@@ -80,7 +76,7 @@
           <br />
           <input type="radio" id="coach" name="title" value="Coach" />
           <label for="coach" id="coach-label">Coach</label>
-        </div>
+        </span>
       </p>
       <div id="software">
         <p>

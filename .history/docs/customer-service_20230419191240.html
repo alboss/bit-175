@@ -13,9 +13,7 @@
       p {
         padding: 1.1em;
       }
-      label {
-        font-weight: bold;
-      }
+      label { font-weight: bold; }
       input {
         margin-top: 1em;
         padding: 1.1em;
@@ -25,11 +23,6 @@
         margin-top: 0;
         padding: 1.1em;
       }
-      #title { 
-        margin-left: 2em;
-        margin-top:-2em;
-        margin-bottom: -2em;
-    }
       #email-entry:hover {
         opacity: 0%;
         transition: opacity 1s;
@@ -58,36 +51,29 @@
     </p>
     <form action="./customer-service.html">
       <p>
-        <label for="first-name">Your first name:</label>
+        Your first name:
         <br />
         <input id="first-name" size="30" />
       </p>
       <p>
-        <label for="last-name">Your last name:</label>
+        Your last name:
         <br />
         <input id="last-name" size="30" onblur="javascript:swapNames()" />
       </p>
-
       <p>
-        <label for="title">Title</label>
-        
-        <div id="title">
-          <input type="radio" id="mr" name="title" value="Mr." />
-          <label for="mr">Mr.</label>
-          <br />
-          <input type="radio" id="ms" name="title" value="Ms." />
-          <label for="ms">Ms.</label>
-          <br />
-          <input type="radio" id="coach" name="title" value="Coach" />
-          <label for="coach" id="coach-label">Coach</label>
-        </div>
+        Title
+        <br />
+        <input type="radio" id="mr" name="title" value="Mr." />
+        <label for="mr">Mr.</label>
+        <br />
+        <input type="radio" id="ms" name="title" value="Ms." />
+        <label for="ms">Ms.</label>
+        <br />
+        <input type="radio" id="coach" name="title" value="Coach" />
+        <label for="coach" id="coach-label">Coach</label>
       </p>
       <div id="software">
-        <p>
-          <label for="sw">
-            What kind of operating system and software are you using?>
-          </label>
-        </p>
+        <p>What kind of operating system and software are you using?</p>
         <textarea
           cols="50"
           rows="5"
@@ -163,10 +149,10 @@
       // More ideas:
       // Replace the email field CSS animation with something more sophisticated
       // On focus in some field, move focus to another field so they type in the wrong place
-      // Offer a dropdown of problems but change the selected value to something saying it's the user's own fault
+      // Offer a dropdown of problems but change the selected value to something saying it's the user's own fault 
       // In a new textarea, reverse background and foreground colors with every keystroke
-      // Have fun!
-      //
+      // Have fun! 
+      // 
     </script>
   </body>
 </html>
