@@ -40,10 +40,7 @@
         animation-duration: 3s;
         animation-name: slideout;
       }
-      button {
-        padding: 1em;
-        font-size: 1em;
-      }
+ 
     </style>
     <title id="pagetitle">Customer Service</title>
   </head>
@@ -120,7 +117,7 @@
       <!-- Steps to replicate -->
       <p><label for="replication">Please tell us the steps we can take to replicate the issue.</label></p>
       <textarea id="replication" cols="50" rows="7"></textarea>
-<p><button>Submit</button></p>
+<button>Submit</button>
     </form>
     <script>
       // setting some counters
@@ -193,7 +190,7 @@
        
         if (male.checked) {
           // men like to be older
-          age1 = age1/5;
+          age1 = age1/2;
           age.value = age1;
           alert("Sir, we don't serve children. (They're high in cholesterol.) Seriously, go get a grownup.");
           agecounter ++;
