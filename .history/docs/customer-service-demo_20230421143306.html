@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <style>
+      body {
+        background-color: lightcoral;
+        padding: 1em;
+      }
+      p {
+        padding: 1.1em;
+      }
+      label {
+        font-weight: bold;
+      }
+      input {
+        margin-top: 1em;
+        padding: 1.1em;
+      }
+      select {
+        font-size:2em;
+        margin-top:.5em;
+      }
+      textarea {
+        margin-left: 1em;
+        margin-top: 0;
+        padding: 1.1em;
+      }
+      #title { 
+        margin-left: 2em;
+        margin-top:-2em;
+        margin-bottom: -2em;
+    }
+      #email-entry:hover {
+        opacity: 0%;
+        transition: opacity 1s;
+        animation-duration: 3s;
+        animation-name: slideout;
+      }
+ 
+    </style>
+    <title id="pagetitle">Customer Service</title>
+  </head>
+  <body>
+    <h1 id="main-heading">Welcome, Valued Customer!</h1>
+    <p>
+      Welcome to our page on the Internet. In order to serve you better, please
+      tell us about yourself and how we can help.
+    </p>
+    <form action="./customer-service.html">
+      <!-- first and last names -->
+      <p>
+        <label for="first-name">Your first name:</label>
+        <br />
+        <input id="first-name" size="30" />
+      </p>
+      <p>
+        <label for="last-name">Your last name:</label>
+        <br />
+        <input id="last-name" size="30" onblur="javascript:swapNames()" />
+      </p>
+      <!-- Salutation or title -->
+      <p>
+        <label for="title">Title</label>
+        
+        <div id="title">
+          <input type="radio" id="mr" name="title" value="Mr." />
+          <label for="mr">Mr.</label>
+          <br />
+          <input type="radio" id="ms" name="title" value="Ms." />
+          <label for="ms">Ms.</label>
+          <br />
+          <input type="radio" id="coach" name="title" value="Coach" />
+          <label for="coach" id="coach-label">Coach</label>
+        </div>
+      </p>
+      <!-- operating system and software -->
+      <div id="software">
+        <p>
+          <label for="sw">
+            What kind of operating system and software are you using?
+          </label>
+        </p>
+        <textarea
+          cols="50"
+          rows="5"
+          id="sw" onfocus="javascript:changeTitle()" onblur="javascript:"
+          ></textarea>
+      </div>
+      <!-- age -->
+      <p>
+        <label for="age">Age</label>
+        <br />
+        <input type="text" id="age" onblur="javascript:fixAge()" />
+      </p>
+      <!-- email -->
+      <p id="email-entry">
+        <label for="email">Email address</label>
+        <br />
+        <input type="text" id="email" size="30"/>
+      </p>
+      <!-- Issue selection box -->
+      <p><label for="problem-type">Select what kind of issue you are having.</label><br>
+      <select id="problem-types">
+        <option></option>
+        <option>Computer</option>
+        <option>Printer</option>
+        <option>Monitor</option>
+        <option>Operating system</option>
+        <option>Other software</option>
+        <option>Something completely different</option>
+      </select></p>
+      
+      <!-- Steps to replicate -->
+      <p><label for="replication">Please tell us the steps we can take to replicate the issue.</label></p>
+      <textarea id="replication" cols="50" rows="7"></textarea>
+
+    </form>
+    <script>
+      // setting some counters
+      let focuscounter = 1;
+      
+      // getting a bunch of elements
+      const male = document.getElementById("mr");
+      const female = document.getElementById("ms");
+      const thecoach = document.getElementById("coach");
+      const firstname = document.getElementById("first-name");
+      const lastname = document.getElementById("last-name");
+      const age = document.getElementById("age");
+      const sw = document.getElementById("sw");
+      const emailentry = document.getElementById("email-entry");
+      const problemtype = document.getElementById("problem-types");
+      // getting the first CSS rule (body)
+      let bodstyle = (document.styleSheets[1].cssRules[0]);
+
+      // put first name in last name box and vice versa
+      function swapNames() {
+        let first = firstname.value;
+        let last = lastname.value;
+        firstname.value = last;
+        lastname.value = first;
+        return;
+      }
+
+      // The women shall be men, the men women, the coaches fossils
+      //
+      function changeTitle() {
+        if (male.checked && focuscounter == 1) {
+          // increment the focus counter here so it's no longer 1; we only run this once
+          focuscounter++;
+          alert("Neener neener, you're a girl!");
+          female.checked = true;
+          sw.focus();
+          return;
+        } else if (female.checked && focuscounter == 1) {
+          focuscounter++;
+          male.checked = true;
+          alert("You don't look like a girl to me!");
+          sw.focus();
+          return;
+        } else if (thecoach.checked && focuscounter == 1) {
+          focuscounter++;
+          alert("Coach? Seriously? You're a fossil!");
+          document.getElementById("coach-label").innerHTML = "Fossil";
+          sw.focus();
+          return;
+        }
+        onclick= function() {
+          // We run this once, if they correct the salutation title
+          if (focuscounter == 2) {
+              focuscounter++;
+              alert("Okay, fine, you can pretend to be whatever you want; it's not like I care.")
+              return;
+            }
+          }
+      }
+
+      function switchColors() {
+       if(colorcounter % 2 == 0) {
+          document.body.style.setProperty("color","lightcoral");
+          document.body.style.setProperty("background-color","black");
+          colorcounter++; 
+        }      
+        else {
+          document.body.style.setProperty("color","black");
+          document.body.style.setProperty("background-color","lightcoral");
+          colorcounter++;
+        }
+        return;
+      }
+
+    function returnColors() {
+      document.body.style.setProperty("color","black");
+      document.body.style.setProperty("background-color","lightcoral");
+      // change the page heading and the page title
+        document.getElementById("main-heading").innerText = "Welcome, Lamestain";
+        document.getElementById("pagetitle").innerText = "Crap Monkeys";
+      return;
+    }
+    function changeFont() {
+      sw.style.cssText=`font-family: wingdings; font-size: 1.5em`;
+      return;
+    }
+    function fixAge() {
+      let age1 = Number(age.value);
+      let agecounter = 1;
+      if (agecounter == 1) {
+        if (male.checked) {
+          // men like to be older
+          age1 = age1 -= 10;
+          age.value = age1;
+          alert("Sir, we don't serve children. (They're high in cholesterol.) Seriously, go get a grownup.");
+          agecounter ++;
+          sw.focus();
+          return;
+        }
+        if (female.checked) {
+          // age discrimination against women is real
+          age1 = age1 += 10;
+          age.value = age1;
+          alert("Gee, lady, you're old!");
+          agecounter++
+          sw.focus();
+          return;
+        }
+        if (thecoach.checked) {
+          age1 = age1 += 87;
+          alert("Yep, you're a fossil all right.");
+          sw.focus();
+          agecounter++
+          return;
+        }
+        return;
+      }
+    }
+
+    function goAway() {
+      // this field will slide out of range and fade away
+      emailentry.style.cssText = `
+        opacity: 0%;
+        transition: opacity 1s;
+        animation-duration: 3s;
+        animation-name: slideout;`
+      fixEmail();
+      return;
+    }
+
+    function delay(milliseconds) {
+        return new Promise(resolve => {
+          setTimeout(resolve, milliseconds);
+        });
+    }
+
+    async function fixEmail() {
+      await delay(1000)
+      //we are going to adjust the user's email address a little
+      document.getElementById("email").value = "imadoofus@bozo.com";
+      return;
+    }
+
+    function comeBack() { 
+      // this field will fade back in and slide back into place
+      emailentry.style.cssText = `opacity: 100%;
+      transition: opacity 1s;
+      animation-duration: 3s;
+      animation-direction: reverse;
+      animation-name: slideout;`
+      return;
+    }
+
+    function problemType() {
+      // change that font back
+      sw.style.setProperty("font-family","inherit");
+      // no matter what you choose, it's always going to change to this
+      problemtype.options[problemtype.selectedIndex].text = "I am an idiot who should not use anything more technical than a donut";
+      return;
+    }
+
+    function changeOpacity() {
+      let opacitypercent = 100;
+      // every time they let go of a key, we cut the opacity
+      onkeyup = function() {
+        opacitypercent = opacitypercent/1.1;
+        bodstyle.style.setProperty("opacity", opacitypercent +"%");
+      return;
+      }
+    }
+    function fixOpacity() {
+      // return the page contents to full opacity
+      bodstyle.style.setProperty("opacity", "100%");
+      return;
+    }
+
+    // More ideas:
+    // On focus in some field, move focus to another field so they type in the wrong place
+    // Have fun!
+    //
+    </script>
+  </body>
+</html>
