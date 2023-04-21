@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <style>
+      body {
+        background-color: lightcoral;
+        padding: 1em;
+      }
+      p {
+        padding: 1.1em;
+      }
+      label {
+        font-weight: bold;
+      }
+      input {
+        margin-top: 1em;
+        padding: 1.1em;
+      }
+      select {
+        font-size:2em;
+        margin-top:.5em;
+      }
+      textarea {
+        margin-left: 1em;
+        margin-top: 0;
+        padding: 1.1em;
+      }
+      #title { 
+        margin-left: 2em;
+        margin-top:-2em;
+        margin-bottom: -2em;
+    }
+      #email-entry:hover {
+        opacity: 0%;
+        transition: opacity 1s;
+        animation-duration: 3s;
+        animation-name: slideout;
+      }
+      @keyframes slideout {
+        from {
+          margin-left: 0%;
+          width: 100%;
+        }
+
+        to {
+          margin-left: 100%;
+          width: 300%;
+        }
+      }
+    </style>
+    <title id="pagetitle">Customer Service</title>
+  </head>
+  <body>
+    <h1 id="main-heading">Welcome, Valued Customer!</h1>
+    <p>
+      Welcome to our page on the Internet. In order to serve you better, please
+      tell us about yourself and how we can help.
+    </p>
+    <form action="./customer-service.html">
+      <p>
+        <label for="first-name">Your first name:</label>
+        <br />
+        <input id="first-name" size="30" />
+      </p>
+      <p>
+        <label for="last-name">Your last name:</label>
+        <br />
+        <input id="last-name" size="30" onblur="javascript:swapNames()" />
+      </p>
+
+      <p>
+        <label for="title">Title</label>
+        
+        <div id="title">
+          <input type="radio" id="mr" name="title" value="Mr." />
+          <label for="mr">Mr.</label>
+          <br />
+          <input type="radio" id="ms" name="title" value="Ms." />
+          <label for="ms">Ms.</label>
+          <br />
+          <input type="radio" id="coach" name="title" value="Coach" />
+          <label for="coach" id="coach-label">Coach</label>
+        </div>
+      </p>
+      <div id="software">
+        <p>
+          <label for="sw">
+            What kind of operating system and software are you using?
+          </label>
+        </p>
+        <textarea
+          cols="50"
+          rows="5"
+          id="sw"
+          onfocus="javascript:changeTitle()" onblur="javascript:fixOpacity()"></textarea>
+      </div>
+      <p>
+        <label for="age">Age</label>
+        <br />
+        <input type="text" id="age" onblur="javascript:fixAge()" />
+      </p>
+      <p id="email-entry">
+        <label for="email">Email address</label>
+        <br />
+        <input type="text" id="email" size="30" onfocus="javascript:goAway()" onblur="javascript:comeBack()"/>
+      </p>
+      <p><label for="problem-type">Select what kind of issue your are having</label><br>
+      <select id="problem-types" onblur="problemType()">
+        <option></option>
+        <option>Computer</option>
+        <option>Printer</option>
+        <option>Monitor</option>
+        <option>Operating system</option>
+        <option>Other software</option>
+        <option>Something completely different</option>
+      </select></p>
+    </form>
+    <script>
+      // setting a counter so the title change only runs once
+      let focuscounter = 1;
+      // getting a bunch of elements
+      const male = document.getElementById("mr");
+      const female = document.getElementById("ms");
+      const thecoach = document.getElementById("coach");
+      const firstname = document.getElementById("first-name");
+      const lastname = document.getElementById("last-name");
+      const age = document.getElementById("age");
+      const emailentry = document.getElementById("email-entry");
+      const problemtype = document.getElementById("problem-types");
+      // getting the first CSS rule (body)
+      let bodstyle = (document.styleSheets[1].cssRules[0]);
+
+      // put first name in last name box and vice versa
+      function swapNames() {
+        let first = firstname.value;
+        let last = lastname.value;
+        firstname.value = last;
+        lastname.value = first;
+        return;
+      }
+
+      // The women shall be men, the men women, the coaches fossils
+      //
+      function changeTitle() {
+        if (male.checked && focuscounter == 1) {
+          // increment the focus counter here so it's no longer 1; we only run this once
+          focuscounter++;
+
+          alert("Neener neener, you're a girl!");
+          female.checked = true;
+          document.getElementById("sw").focus();
+          return;
+        } else if (female.checked && focuscounter == 1) {
+          focuscounter++;
+          male.checked = true;
+          alert("You don't look like a girl to me!");
+          document.getElementById("sw").focus();
+          return;
+        } else if (thecoach.checked && focuscounter == 1) {
+          focuscounter++;
+          alert("Coach? Seriously? You're a fossil!");
+          document.getElementById("coach-label").innerHTML = "Fossil";
+          document.getElementById("sw").focus();
+          return;
+        }
+        // now run the opacity function
+        changeOpacity();
+      }
+function changeOpacity() {
+      let opacitypercent = 100;
+      onkeyup = function() {
+      opacitypercent = opacitypercent/1.1
+      bodstyle.style.setProperty("opacity", opacitypercent +"%")
+      return;
+      }
+}
+    function fixOpacity() {
+      bodstyle.style.setProperty("opacity", "100%");
+      // we will make things readable again but change the page heading and the page title
+      document.getElementById("main-heading").innerText = "Welcome, Lamestain";
+      document.getElementById("pagetitle").innerText = "Crap Monkeys";
+    }
+      function fixAge() {
+        var age1 = Number(age.value);
+        if (male.checked) {
+          age1 = age1 -= 10;
+          age.value = age1;
+          alert(
+            "We don't serve children. (They're high in cholesterol.) Seriously, go get a grownup."
+          );
+        }
+        if (female.checked) {
+          age1 = age1 += 10;
+          age.value = age1;
+          alert("Gee, you're old!");
+        }
+        return;
+      }
+
+      function goAway() {
+        emailentry.style.cssText = `opacity: 0%;
+        transition: opacity 1s;
+        animation-duration: 3s;
+        animation-name: slideout;`
+      }
+      function comeBack() { 
+        emailentry.style.cssText = `opacity: 100%;
+        transition: opacity 1s;
+        animation-duration: 3s;
+        animation-direction: reverse;
+        animation-name: slideout;`
+        document.getElementById("email").value = "imadoofus@bozo.com";
+      }
+      function problemType() {
+        problemtype.options[problemtype.selectedIndex].text = "I am an idiot who should not use anything more technical than a donut";
+        return;
+      }
+      
+
+      // More ideas:
+      // On focus in some field, move focus to another field so they type in the wrong place
+      // In a new textarea, reverse background and foreground colors with every keystroke
+      // Have fun!
+      //
+    </script>
+  </body>
+</html>
