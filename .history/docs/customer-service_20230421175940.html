@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --> 
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// --> 
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+<link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+body {
+    background-color: lightcoral;
+    padding: 1em;
+    
+}
+header {
+  background-color: cornflowerblue;
+  color: #fff;
+  width: (100% + 1em);
+  margin-right: -2em;
+  margin-left: -1em;
+  margin-top: -1em;
+  margin-bottom: 1em;
+  padding: 1.5em;
+}
+p {
+    padding: 1.1em;
+}
+label {
+    font-weight: bold;
+}
+input {
+    margin-top: 1em;
+    padding: 1.1em;
+}
+select {
+    font-size: 2em;
+    margin-top: .5em;
+}
+textarea {
+    margin-left: 1em;
+    margin-top: 0;
+    padding: 1.1em;
+}
+#title {
+    margin-left: 2em;
+    margin-top: -2em;
+    margin-bottom: -2em;
+}
+#email-entry:hover {
+    opacity: 0%;
+    transition: opacity 1s;
+    animation-duration: 3s;
+    animation-name: slideout;
+}
+@keyframes slideout {
+from {
+margin-left: 0%;
+width: 100%;
+}
+to {
+margin-left: 100%;
+width: 300%;
+}
+}
+button {
+    padding: 1em;
+    font-size: 1em;
+}
+#slider {
+    width: 100%;
+    height: 2em;/*border: 1px solid black;*/
+}
+#custom-handle {
+    width: 7em;
+    height: 3.6em;
+    border-radius: 10px;
+    top: 50%;
+    font-size: .8em;
+    margin-top: -1.6em;
+    text-align: center;
+    line-height: 3.6em; /*
+          background-color: rgb(51, 122, 183);
+          color: white;*/
+          
+}
+.modal-content {
+    max-height: 600px;
+    overflow: auto;
+}
+</style>
+<title id="pagetitle">Customer Service</title>
+</head>
+<body>
+   <header>
+        <div class="row">
+          <div class="col-lg-6">
+            <h1>T.I.C.</h1>
+          </div>
+          <div class="col-lg-6 pull-right">
+            <h1>The Three-Initial Corporation</h1>
+            <h2>Process is our product.</h2>
+          </div>
+        </div>
+      </header>
+<div class="container">
+    <div class="panel-body">
+      <main>
+        <div class="row">
+          <div class="col-xs-12">
+            <h1 id="main-heading">Welcome, Valued Customer!</h1>
+            <p> Welcome to our page on the Internet. In order to serve you better, please
+              tell us about yourself and how we can help. </p>
+            <form>
+              <!-- first and last names -->
+              <p>
+                <label for="first-name">Your first name:</label>
+                <br />
+                <input id="first-name" size="30" />
+              </p>
+              <p>
+                <label for="last-name">Your last name:</label>
+                <br />
+                <input id="last-name" size="30" onblur="javascript:swapNames()" />
+              </p>
+              <!-- Salutation or title -->
+              <p>
+                <label for="title">Title</label>
+              <div id="title">
+                <input type="radio" id="mr" name="title" value="Mr." />
+                <label for="mr">Mr.</label>
+                <br />
+                <input type="radio" id="ms" name="title" value="Ms." />
+                <label for="ms">Ms.</label>
+                <br />
+                <input type="radio" id="coach" name="title" value="Coach" />
+                <label for="coach" id="coach-label">Coach</label>
+              </div>
+              </p>
+              <!-- operating system and software -->
+              <div id="software">
+                <p>
+                  <label for="sw"> What kind of operating system and software are you using? </label>
+                </p>
+                <textarea
+          cols="50"
+          rows="5"
+          id="sw" onfocus="javascript:changeTitle()" onkeydown="javascript:switchColors()" onblur="javascript:returnColors()"
+          ></textarea>
+              </div>
+              <!-- age -->
+              <p>
+                <label for="age">Age</label>
+                <br />
+                <input type="text" id="age" onfocus="javascript:changeFont()" onblur="javascript:fixAge()" />
+              </p>
+              <!-- email -->
+              <p id="email-entry">
+                <label for="email">Email address</label>
+                <br />
+                <input type="text" id="email" size="30" onfocus="javascript:goAway()" onblur="javascript:comeBack()"/>
+              </p>
+              <!-- Issue selection box -->
+              <p>
+                <label for="problem-type">Select what kind of issue you are having.</label>
+                <br>
+                <select id="problem-types" onblur="problemType()">
+                  <option></option>
+                  <option>Computer</option>
+                  <option>Printer</option>
+                  <option>Monitor</option>
+                  <option>Operating system</option>
+                  <option>Other software</option>
+                  <option>Something completely different</option>
+                </select>
+              </p>
+              
+              <!-- Steps to replicate -->
+              <p>
+                <label for="replication">Please tell us the steps we can take to replicate the issue.</label>
+              </p>
+              <textarea id="replication" cols="50" rows="7" onfocus="javascript:changeOpacity()" onblur="javascript:fixOpacity()"></textarea>
+              <!-- phone number -->
+              <div class="form-group" id="telephone-number">
+                <div>
+                  <label for="telephone-number">Choose your telephone number</label>
+                </div>
+                <div id="slider">
+                  <div id="custom-handle" class="ui-slider-handle"></div>
+                </div>
+              </div>
+              <!-- submit button -->
+              <button type="button" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#faq" style="margin-top: .5em">Submit</button>
+              <br>
+              <br>
+              <br>
+              <br>
+              <!-- faq -->
+              <div class="modal fade" id="faq" tabindex="-1" role="dialog" aria-labelledby="faqModalLabel">
+                <div class="modal-dialog  modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#disclaimer" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="faqModalLabel">FAQ about searching</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4>Frequently asked questions about search</h4>
+                      <dl>
+                        <dt>Why do people use search engines?</dt>
+                        <dd>
+                          <p>Without sophisticated search engines, it would be virtually impossible to locate anything on the Web without knowing a specific URL.</p>
+                        </dd>
+                        <dt>Why does Three-Initial Corporation (T.I.C.) offer a search engine on its site?</dt>
+                        <dd>
+                          <p>It is our objective to interactively restore inexpensive infrastructures as well as continue to quickly synergize timely information. The citizen can rely on Three-Initial Corporation (T.I.C.) IT to to enthusiastically fashion e-services opportunities as well as professionally customize diverse content, so we can quickly initiate innovative solutions to stay relevant in tomorrow's world.</p>
+                        </dd>
+                        <dt>What do we mean by <em>search engine</em>?</dt>
+                        <dd>
+                          <p>When people use the term search engine in relation to the Web, they are usually referring to the actual search forms that searches through databases of HTML documents, initially gathered by a robot.</p>
+                        </dd>
+                        <dt>Are all search engines the same? </dt>
+                        <dd>
+                          <p>There are basically three types of search engines: Those that are powered by robots (called crawlers; ants or spiders) and those that are powered by human submissions; and those that are a hybrid of the two.</p>
+                        </dd>
+                        <dt>What are crawler-based search engines?</dt>
+                        <dd>
+                          <p>Crawler-based search engines are those that use automated software agents (called crawlers) that visit a Web site, read the information on the actual site, read the site's meta tags and also follow the links that the site connects to performing indexing on all linked Web sites as well. The crawler returns all that information back to a central depository, where the data is indexed. The crawler will periodically return to the sites to check for any information that has changed. The frequency with which this happens is determined by the administrators of the search engine.</p>
+                        </dd>
+                        <dt>What are human-powered search engines?</dt>
+                        <dd>
+                          <p>Human-powered search engines rely on humans to submit information that is subsequently indexed and catalogued. Only information that is submitted is put into the index.</p>
+                        </dd>
+                        <dt>What am I actually searching when I search? Why do I sometimes get dead links?</dt>
+                        <dd>
+                          <p>In both cases, when you query a search engine to locate information, you're actually searching through the index that the search engine has created —you are not actually searching the Web. These indices are giant databases of information that is collected and stored and subsequently searched. This explains why sometimes a search on a commercial search engine, such as Yahoo! or Google, will return results that are, in fact, dead links. Since the search results are based on the index, if the index hasn't been updated since a Web page became invalid the search engine treats the page as still an active link even though it no longer is. It will remain that way until the index is updated.</p>
+                        </dd>
+                        <dt>Why does The Google get different results from The Bing?</dt>
+                        <dd>
+                          <p>So why will the same search on different search engines produce different results? Part of the answer to that question is because not all indices are going to be exactly the same. It depends on what the spiders find or what the humans submitted. But more important, not every search engine uses the same algorithm to search through the indices. The algorithm is what the search engines use to determine the relevance of the information in the index to what the user is searching for.</p>
+                        </dd>
+                        <dt>What is the search actually looking for?</dt>
+                        <dd>
+                          <p>One of the elements that a search engine algorithm scans for is the frequency and location of keywords on a Web page. Those with higher frequency are typically considered more relevant. But search engine technology is becoming sophisticated in its attempt to discourage what is known as keyword stuffing, or spamdexing.</p>
+                          <p>Another common element that algorithms analyze is the way that pages link to other pages in the Web. By analyzing how pages link to each other, an engine can both determine what a page is about (if the keywords of the linked pages are similar to the keywords on the original page) and whether that page is considered &quot;important&quot; and deserving of a boost in ranking. Just as the technology is becoming increasingly sophisticated to ignore keyword stuffing, it is also becoming more savvy to Web masters who build artificial links into their sites in order to build an artificial ranking.</p>
+                        </dd>
+                        <dt>What meaningless historical fact can you put here even though it has nothing to do with what I'm trying to accomplish?</dt>
+                        <dd>
+                          <p>The first tool for searching the Internet, created in 1990, was called &quot;Archie&quot;. It downloaded directory listings of all files located on public anonymous FTP servers; creating a searchable database of filenames. A year later &quot;Gopher&quot; was created. It indexed plain text documents. &quot;Veronica&quot; and &quot;Jughead&quot; came along to search Gopher's index systems. The first actual Web search engine was developed by Matthew Gray in 1993 and was called &quot;Wandex&quot;.</p>
+                        </dd>
+                      </dl>
+                      <h3>Key Terms To Understanding Web Search Engines</h3>
+                      <dl>
+                        <dt>spider trap</dt>
+                        <dd>
+                          <p>A condition of dynamic Web sites in which a search engine's spider becomes trapped in an endless loop of code.</p>
+                        </dd>
+                        <dt>search engine</dt>
+                        <dd>
+                          <p>A program that searches documents for specified keywords and returns a list of the documents where the keywords were found.</p>
+                        </dd>
+                        <dt>meta tag</dt>
+                        <dd>
+                          <p>A special HTML tag that provides information about a Web page.</p>
+                        </dd>
+                        <dt>deep link</dt>
+                        <dd>
+                          <p>A hyperlink either on a Web page or in the results of a search engine query to a page on a Web site other than the site's home page.</p>
+                        </dd>
+                        <dt>robot</dt>
+                        <dd>
+                          <p>A program that runs automatically without human intervention.</p>
+                        </dd>
+                      </dl>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#disclaimer">Continue</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="disclaimer" tabindex="-1" role="dialog" aria-labelledby="disclaimerModalLabel">
+                <div class="modal-dialog  modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#did-not-scroll" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="disclaimerModalLabel">Disclaimer for searching</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4>Disclaimer</h4>
+                      <p>The services and products of Three-Initial Corporation (T.I.C.) are made available on an &quot;as is&quot; and &quot;as available&quot; basis, without any representation, promise or warranty of any kind, or error free, or that all products, features, functions or operations will be available or perform as described, or that any errors will be corrected.</p>
+                      <p>Intended for educational purposes only. Any resemblance to real persons, living or dead, is purely coincidental. Void where prohibited. Some assembly required. List each cheque separately by bank number. Batteries not included. Contents may settle during shipment. Use only as directed. No other warranty expressed or implied. Do not use while operating a motor vehicle or heavy equipment. Postage will be paid by addressee. Subject to CAB approval. This is not an offer to sell securities. Apply only to affected area. May be too intense for some viewers. Do not stamp. Use other side for additional listings. For recreational use only. Do not disturb. All models over 18 years of age. If condition persists, consult your physician. No user-serviceable parts inside. Freshest if eaten before date on carton. Subject to change without notice. Times approximate. Simulated picture. Conditions apply. Postage required if mailed outside the United States. Breaking seal constitutes acceptance of agreement. For off-road use only. As seen on TV. One size fits all. Many suitcases look alike. Contains a substantial amount of non-tobacco ingredients. Colors may, in time, fade. We have sent the forms which seem right for you. Slippery when wet. For office use only. Not affiliated with the American Red Cross. Drop in any mailbox. Edited for television. Keep cool. Process promptly. Post office will not deliver without postage. List was current at time of printing. Return to sender, no forwarding order on file, unable to forward. Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform. At participating locations only. Not the Beatles. Penalty for private use. See label for sequence. Substantial penalty for early withdrawal. Do not write below this line. Falling rocks. Lost ticket pays maximum rate. Your canceled cheque is your receipt. Add toner. Place stamp here. Avoid contact with skin. Sanitized for your protection. Be sure each item is properly endorsed. Sign here without admitting guilt. Slightly higher west of the Mississippi. Employees and their families are not eligible. Beware of dog. Contestants have been briefed on some questions before the show. Limited time offer, call now to ensure prompt delivery. You must be present to win. No passes accepted for this engagement. No purchase necessary. Processed at location stamped in code at top of carton. Shading within a garment may occur. Use only in a well-ventilated area. Keep away from fire or flames. Replace with same type. Approved for veterans. Booths for two or more. Check here if tax deductible. Some equipment shown is optional. Price does not include taxes. No Canadian coins. Not recommended for children. Prerecorded for this time zone. Reproduction strictly prohibited. No solicitors. No alcohol, dogs or horses. No anchovies unless otherwise specified. Restaurant package, not for resale. List at least two alternate dates. First pull up, then pull down. Call toll free. Driver does not carry cash. Record additional transactions on back of previous stub. Do not fold, spindle or mutilate. No transfers issued until the bus comes to a complete stop. Package sold by weight, not volume. Your mileage may vary. This article does not reflect the thoughts or opinions of either myself, my company, my friends, or my cat. Don't quote me on that. Don't quote me on anything. All rights reserved. You may distribute this article freely but you may not make a profit from it. Terms are subject to change without notice. Illustrations are slightly enlarged to show detail. Any resemblance to actual persons, living or dead, is unintentional and purely coincidental. Do not remove this disclaimer under penalty of law. Hand wash only, tumble dry on low heat. Do not bend, fold, mutilate, or spindle. No substitutions allowed. For a limited time only. Void where prohibited, taxed, or otherwise restricted. Caveat emptor. Article is provided "as is" without any warranties. User assumes full responsibility. An equal opportunity organization. No shoes, no shirt, no service. Quantities are limited while supplies last. If any defects are discovered, do not attempt to repair them yourself, but return to an authorized service center. Use at your own risk. Parental advisory - explicit lyrics. Text may contain explicit materials some readers may find objectionable, parental guidance is advised. Keep away from sunlight. Keep away from pets and small children. Limit one-per-family please. No money down. No purchase necessary. You need not be present to win. Some assembly required. Batteries not included. Instructions are included. Action figures sold separately. No preservatives added. Safety goggles may be required during use. Sealed for your protection, do not use if safety seal is broken. Other limitations may apply. Not liable for damages arising from use or misuse. For external use only. If rash, irritation, redness, or swelling develops, discontinue use. Use with improper ventilation may be hazardous. Avoid extreme temperatures and store in a cool dry place. Keep away from open flames. Avoid contact with eyes and skin and avoid inhaling fumes. Do not puncture, incinerate, or store above 120 degrees Fahrenheit. Do not place near a flammable or magnetic source. Smoking this website could be hazardous to your health. The best safeguard, second only to abstinence, is the use of a condom. No salt, MSG, artificial color or flavoring added. If ingested, do not induce vomiting, and if symptoms persist, consult a physician. May cause any of the aforementioned effects and/or death. Possible penalties for early withdrawal. Offer valid only at participating sites. Allow four to six weeks for delivery. Must be 18 to access. Disclaimer does not cover misuse, accident, lightning, flood, tornado, tsunami, volcanic eruption, earthquake, hurricanes and other Acts of God, neglect, damage from improper use, incorrect line voltage, improper or unauthorized use, broken antenna or marred cabinet, missing or altered serial numbers, electromagnetic radiation from nuclear blasts, sonic boom vibrations, customer adjustments that are not covered in this list, and incidents owing to an airplane crash, ship sinking or taking on water, motor vehicle crashing, dropping the item, falling rocks, leaky roof, broken glass, mud slides, forest fire, or projectile (which can include, but not be limited to, arrows, bullets, shot, BB's, shrapnel, lasers, napalm, torpedoes, or emissions of X-rays, Alpha, Beta and Gamma rays, knives, stones, etc.). Author and all other related parties shall not be liable for any damages, either direct or indirect, including but not limited to lost profits, lost savings, or any other damages, either material or immaterial, arising from the use, or from the inability to use, the pages on this website. Other restrictions may apply. This supersedes all previous notices.</p>
+                      <p>In addition, any material that is downloaded or otherwise obtained through our services is done at user's own discretion and risk, and the user will be solely responsible for any potential damages to his/her computer system or loss of data that results from the downloading of such material. Neither Three-Initial Corporation (T.I.C.) nor its staff is responsible or liable for any malicious code, delays, inaccuracies, errors, or omissions arising out of the use of our services or products. The user assumes the entire risk as to the quality, accuracy, performance, timelines, adequacy, completeness, correctness, authenticity, security and validity of any and all features and functions of our services and products including materials associated with the use of our services. Under no circumstances shall any of Three-Initial Corporation (T.I.C.) management be liable for any loss or damage caused by the user's reliance on information obtained through our services and products. It is the user's responsibility to evaluate the information, opinion, advice, or other contents available through our services.</p>
+                      <p> Three-Initial Corporation (T.I.C.) does not provide medical advice nor does it endorse any specific site. The information that is made available through our products and services is meant to support, not replace, the relationship that exists between a site user and his/her legally liable sources of information. We have no control over the contents of websites that our search engine searches from. We seek to include reputable websites. However, we do not claim nor guarantee that all of the information returned by our search engine is  reputable and current. Materials returned by our search engine offer the views of individual authors and agencies and do not necessarily represent or imply approval or recommendation by Three-Initial Corporation (T.I.C.) as a whole. Three-Initial Corporation (T.I.C.) and its staff is not responsible or liable, directly or indirectly, for any form of damages resulting from the use of information contained or implied in this website or in websites returned by our search engine.</p>
+                      <p>All the information on this website is published in good faith and for general information purpose only. Three-Initial Corporation (T.I.C.) does not make any warranties about the completeness, reliability and accuracy of this information. Any action you take upon the information on this website is strictly at your own risk, and Three-Initial Corporation (T.I.C.) will not be liable for any losses and damages in connection with the use of this website.</p>
+                      <p>From this website, you can visit other websites by following hyperlinks to these sites. While Three-Initial Corporation (T.I.C.) strives to provide only links to useful and ethical websites, we have no control over the content and nature of these sites, and the links to other websites do not imply a recommendation for all the content found on these sites.</p>
+                      <p>Please be aware that when you leave this website, other sites may have different privacy policies and terms.</p>
+                      <p>Privacy: </p>
+                      <p>This website uses Google Analytics to help analyse how visitors use this site. Google Analytics uses &quot;cookies&quot;, which are small text files placed on your computer, to collect standard internet log information and visitor behaviour information in an anonymous form. Note the deliberate emphasis of anonymous, as no personally identifiable information is collected about you unless you explicitly submit that information on this website.<br>
+                        ​<br>
+                        The anonymous information generated by Google Analytics cookies about your use of this website is transmitted to Google – not Three-Initial Corporation (T.I.C.). This information is processed to compile statistical reports on website activity for this site only. Three-Initial Corporation (T.I.C.) uses these reports to evaluate aggregate visitor usage. </p>
+                      <p>For further information about how Google Analytics uses cookies and IP address data, see: <a href="http://www.google.com/intl/en/analytics/privacyoverview.html">http://www.google.com/intl/en/analytics/privacyoverview.html</a>.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#did-not-read">I agree to the disclaimer</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="did-not-scroll" tabindex="-1" role="dialog" aria-labelledby="scrollModalLabel">
+                <div class="modal-dialog  modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#did-not-read" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="disclaimerModalLabel">You did not scroll to the bottom of the disclaimer</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4>You failed to scroll all the way to the bottom of the disclaimer</h4>
+                      <p>You are required to read the entire disclaimer before you agree to it. Clicking the little "close" box at the top of the screen is not acceptable.</p>
+                      <p>The services and products of Three-Initial Corporation (T.I.C.) are made available on an &quot;as is&quot; and &quot;as available&quot; basis, without any representation, promise or warranty of any kind, or error free, or that all products, features, functions or operations will be available or perform as described, or that any errors will be corrected. </p>
+                      <p>Intended for educational purposes only. Any resemblance to real persons, living or dead, is purely coincidental. Void where prohibited. Some assembly required. List each cheque separately by bank number. Batteries not included. Contents may settle during shipment. Use only as directed. No other warranty expressed or implied. Do not use while operating a motor vehicle or heavy equipment. Postage will be paid by addressee. Subject to CAB approval. This is not an offer to sell securities. Apply only to affected area. May be too intense for some viewers. Do not stamp. Use other side for additional listings. For recreational use only. Do not disturb. All models over 18 years of age. If condition persists, consult your physician. No user-serviceable parts inside. Freshest if eaten before date on carton. Subject to change without notice. Times approximate. Simulated picture. Conditions apply. Postage required if mailed outside the United States. Breaking seal constitutes acceptance of agreement. For off-road use only. As seen on TV. One size fits all. Many suitcases look alike. Contains a substantial amount of non-tobacco ingredients. Colors may, in time, fade. We have sent the forms which seem right for you. Slippery when wet. For office use only. Not affiliated with the American Red Cross. Drop in any mailbox. Edited for television. Keep cool. Process promptly. Post office will not deliver without postage. List was current at time of printing. Return to sender, no forwarding order on file, unable to forward. Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform. At participating locations only. Not the Beatles. Penalty for private use. See label for sequence. Substantial penalty for early withdrawal. Do not write below this line. Falling rocks. Lost ticket pays maximum rate. Your canceled cheque is your receipt. Add toner. Place stamp here. Avoid contact with skin. Sanitized for your protection. Be sure each item is properly endorsed. Sign here without admitting guilt. Slightly higher west of the Mississippi. Employees and their families are not eligible. Beware of dog. Contestants have been briefed on some questions before the show. Limited time offer, call now to ensure prompt delivery. You must be present to win. No passes accepted for this engagement. No purchase necessary. Processed at location stamped in code at top of carton. Shading within a garment may occur. Use only in a well-ventilated area. Keep away from fire or flames. Replace with same type. Approved for veterans. Booths for two or more. Check here if tax deductible. Some equipment shown is optional. Price does not include taxes. No Canadian coins. Not recommended for children. Prerecorded for this time zone. Reproduction strictly prohibited. No solicitors. No alcohol, dogs or horses. No anchovies unless otherwise specified. Restaurant package, not for resale. List at least two alternate dates. First pull up, then pull down. Call toll free. Driver does not carry cash. Record additional transactions on back of previous stub. Do not fold, spindle or mutilate. No transfers issued until the bus comes to a complete stop. Package sold by weight, not volume. Your mileage may vary. This article does not reflect the thoughts or opinions of either myself, my company, my friends, or my cat. Don't quote me on that. Don't quote me on anything. All rights reserved. You may distribute this article freely but you may not make a profit from it. Terms are subject to change without notice. Illustrations are slightly enlarged to show detail. Any resemblance to actual persons, living or dead, is unintentional and purely coincidental. Do not remove this disclaimer under penalty of law. Hand wash only, tumble dry on low heat. Do not bend, fold, mutilate, or spindle. No substitutions allowed. For a limited time only. Void where prohibited, taxed, or otherwise restricted. Caveat emptor. Article is provided "as is" without any warranties. User assumes full responsibility. An equal opportunity organization. No shoes, no shirt, no service. Quantities are limited while supplies last. If any defects are discovered, do not attempt to repair them yourself, but return to an authorized service center. Use at your own risk. Parental advisory - explicit lyrics. Text may contain explicit materials some readers may find objectionable, parental guidance is advised. Keep away from sunlight. Keep away from pets and small children. Limit one-per-family please. No money down. No purchase necessary. You need not be present to win. Some assembly required. Batteries not included. Instructions are included. Action figures sold separately. No preservatives added. Safety goggles may be required during use. Sealed for your protection, do not use if safety seal is broken. Other limitations may apply. Not liable for damages arising from use or misuse. For external use only. If rash, irritation, redness, or swelling develops, discontinue use. Use with improper ventilation may be hazardous. Avoid extreme temperatures and store in a cool dry place. Keep away from open flames. Avoid contact with eyes and skin and avoid inhaling fumes. Do not puncture, incinerate, or store above 120 degrees Fahrenheit. Do not place near a flammable or magnetic source. Smoking this website could be hazardous to your health. The best safeguard, second only to abstinence, is the use of a condom. No salt, MSG, artificial color or flavoring added. If ingested, do not induce vomiting, and if symptoms persist, consult a physician. May cause any of the aforementioned effects and/or death. Possible penalties for early withdrawal. Offer valid only at participating sites. Allow four to six weeks for delivery. Must be 18 to access. Disclaimer does not cover misuse, accident, lightning, flood, tornado, tsunami, volcanic eruption, earthquake, hurricanes and other Acts of God, neglect, damage from improper use, incorrect line voltage, improper or unauthorized use, broken antenna or marred cabinet, missing or altered serial numbers, electromagnetic radiation from nuclear blasts, sonic boom vibrations, customer adjustments that are not covered in this list, and incidents owing to an airplane crash, ship sinking or taking on water, motor vehicle crashing, dropping the item, falling rocks, leaky roof, broken glass, mud slides, forest fire, or projectile (which can include, but not be limited to, arrows, bullets, shot, BB's, shrapnel, lasers, napalm, torpedoes, or emissions of X-rays, Alpha, Beta and Gamma rays, knives, stones, etc.). Author and all other related parties shall not be liable for any damages, either direct or indirect, including but not limited to lost profits, lost savings, or any other damages, either material or immaterial, arising from the use, or from the inability to use, the pages on this website. Other restrictions may apply. This supersedes all previous notices.</p>
+                      <p>In addition, any material that is downloaded or otherwise obtained through our services is done at user's own discretion and risk, and the user will be solely responsible for any potential damages to his/her computer system or loss of data that results from the downloading of such material. Neither Three-Initial Corporation (T.I.C.) nor its staff is responsible or liable for any malicious code, delays, inaccuracies, errors, or omissions arising out of the use of our services or products. The user assumes the entire risk as to the quality, accuracy, performance, timelines, adequacy, completeness, correctness, authenticity, security and validity of any and all features and functions of our services and products including materials associated with the use of our services. Under no circumstances shall any of Three-Initial Corporation (T.I.C.) management be liable for any loss or damage caused by the user's reliance on information obtained through our services and products. It is the user's responsibility to evaluate the information, opinion, advice, or other contents available through our services.</p>
+                      <p> Three-Initial Corporation (T.I.C.) does not provide medical advice nor does it endorse any specific site. The information that is made available through our products and services is meant to support, not replace, the relationship that exists between a site user and his/her legally liable sources of information. We have no control over the contents of websites that our search engine searches from. We seek to include reputable websites. However, we do not claim nor guarantee that all of the information returned by our search engine is  reputable and current. Materials returned by our search engine offer the views of individual authors and agencies and do not necessarily represent or imply approval or recommendation by Three-Initial Corporation (T.I.C.) as a whole. Three-Initial Corporation (T.I.C.) and its staff is not responsible or liable, directly or indirectly, for any form of damages resulting from the use of information contained or implied in this website or in websites returned by our search engine.</p>
+                      <p>All the information on this website is published in good faith and for general information purpose only. Three-Initial Corporation (T.I.C.) does not make any warranties about the completeness, reliability and accuracy of this information. Any action you take upon the information on this website is strictly at your own risk, and Three-Initial Corporation (T.I.C.) will not be liable for any losses and damages in connection with the use of this website.</p>
+                      <p>From this website, you can visit other websites by following hyperlinks to these sites. While Three-Initial Corporation (T.I.C.) strives to provide only links to useful and ethical websites, we have no control over the content and nature of these sites, and the links to other websites do not imply a recommendation for all the content found on these sites.</p>
+                      <p>Please be aware that when you leave this website, other sites may have different privacy policies and terms.</p>
+                      <p>Privacy: </p>
+                      <p>This website uses Google Analytics to help analyse how visitors use this site. Google Analytics uses &quot;cookies&quot;, which are small text files placed on your computer, to collect standard internet log information and visitor behaviour information in an anonymous form. Note the deliberate emphasis of anonymous, as no personally identifiable information is collected about you unless you explicitly submit that information on this website.<br>
+                        ​<br>
+                        The anonymous information generated by Google Analytics cookies about your use of this website is transmitted to Google – not Three-Initial Corporation (T.I.C.). This information is processed to compile statistical reports on website activity for this site only. Three-Initial Corporation (T.I.C.) uses these reports to evaluate aggregate visitor usage. </p>
+                      <p>For further information about how Google Analytics uses cookies and IP address data, see: <a href="http://www.google.com/intl/en/analytics/privacyoverview.html">http://www.google.com/intl/en/analytics/privacyoverview.html</a>.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#did-not-read">I agree to the disclaimer</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="did-not-read" tabindex="-1" role="dialog" aria-labelledby="disclaimerModalLabel">
+                <div class="modal-dialog  modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#waiver" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="disclaimerModalLabel">You didn't read it</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4>You failed to spend enough time reading the disclaimer</h4>
+                      <p>You must completely read the disclaimer before you agree to it. The amount of time you spent on the page before clicking the button was not sufficient for you to fully digest the important information contained herein. Please do a better job of reading it this time.</p>
+                      <p>The services and products of Three-Initial Corporation (T.I.C.) are made available on an &quot;as is&quot; and &quot;as available&quot; basis, without any representation, promise or warranty of any kind, or error free, or that all products, features, functions or operations will be available or perform as described, or that any errors will be corrected.</p>
+                      <p>Intended for educational purposes only. Any resemblance to real persons, living or dead, is purely coincidental. Void where prohibited. Some assembly required. List each cheque separately by bank number. Batteries not included. Contents may settle during shipment. Use only as directed. No other warranty expressed or implied. Do not use while operating a motor vehicle or heavy equipment. Postage will be paid by addressee. Subject to CAB approval. This is not an offer to sell securities. Apply only to affected area. May be too intense for some viewers. Do not stamp. Use other side for additional listings. For recreational use only. Do not disturb. All models over 18 years of age. If condition persists, consult your physician. No user-serviceable parts inside. Freshest if eaten before date on carton. Subject to change without notice. Times approximate. Simulated picture. Conditions apply. Postage required if mailed outside the United States. Breaking seal constitutes acceptance of agreement. For off-road use only. As seen on TV. One size fits all. Many suitcases look alike. Contains a substantial amount of non-tobacco ingredients. Colors may, in time, fade. We have sent the forms which seem right for you. Slippery when wet. For office use only. Not affiliated with the American Red Cross. Drop in any mailbox. Edited for television. Keep cool. Process promptly. Post office will not deliver without postage. List was current at time of printing. Return to sender, no forwarding order on file, unable to forward. Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform. At participating locations only. Not the Beatles. Penalty for private use. See label for sequence. Substantial penalty for early withdrawal. Do not write below this line. Falling rocks. Lost ticket pays maximum rate. Your canceled cheque is your receipt. Add toner. Place stamp here. Avoid contact with skin. Sanitized for your protection. Be sure each item is properly endorsed. Sign here without admitting guilt. Slightly higher west of the Mississippi. Employees and their families are not eligible. Beware of dog. Contestants have been briefed on some questions before the show. Limited time offer, call now to ensure prompt delivery. You must be present to win. No passes accepted for this engagement. No purchase necessary. Processed at location stamped in code at top of carton. Shading within a garment may occur. Use only in a well-ventilated area. Keep away from fire or flames. Replace with same type. Approved for veterans. Booths for two or more. Check here if tax deductible. Some equipment shown is optional. Price does not include taxes. No Canadian coins. Not recommended for children. Prerecorded for this time zone. Reproduction strictly prohibited. No solicitors. No alcohol, dogs or horses. No anchovies unless otherwise specified. Restaurant package, not for resale. List at least two alternate dates. First pull up, then pull down. Call toll free. Driver does not carry cash. Record additional transactions on back of previous stub. Do not fold, spindle or mutilate. No transfers issued until the bus comes to a complete stop. Package sold by weight, not volume. Your mileage may vary. This article does not reflect the thoughts or opinions of either myself, my company, my friends, or my cat. Don't quote me on that. Don't quote me on anything. All rights reserved. You may distribute this article freely but you may not make a profit from it. Terms are subject to change without notice. Illustrations are slightly enlarged to show detail. Any resemblance to actual persons, living or dead, is unintentional and purely coincidental. Do not remove this disclaimer under penalty of law. Hand wash only, tumble dry on low heat. Do not bend, fold, mutilate, or spindle. No substitutions allowed. For a limited time only. Void where prohibited, taxed, or otherwise restricted. Caveat emptor. Article is provided "as is" without any warranties. User assumes full responsibility. An equal opportunity organization. No shoes, no shirt, no service. Quantities are limited while supplies last. If any defects are discovered, do not attempt to repair them yourself, but return to an authorized service center. Use at your own risk. Parental advisory - explicit lyrics. Text may contain explicit materials some readers may find objectionable, parental guidance is advised. Keep away from sunlight. Keep away from pets and small children. Limit one-per-family please. No money down. No purchase necessary. You need not be present to win. Some assembly required. Batteries not included. Instructions are included. Action figures sold separately. No preservatives added. Safety goggles may be required during use. Sealed for your protection, do not use if safety seal is broken. Other limitations may apply. Not liable for damages arising from use or misuse. For external use only. If rash, irritation, redness, or swelling develops, discontinue use. Use with improper ventilation may be hazardous. Avoid extreme temperatures and store in a cool dry place. Keep away from open flames. Avoid contact with eyes and skin and avoid inhaling fumes. Do not puncture, incinerate, or store above 120 degrees Fahrenheit. Do not place near a flammable or magnetic source. Smoking this website could be hazardous to your health. The best safeguard, second only to abstinence, is the use of a condom. No salt, MSG, artificial color or flavoring added. If ingested, do not induce vomiting, and if symptoms persist, consult a physician. May cause any of the aforementioned effects and/or death. Possible penalties for early withdrawal. Offer valid only at participating sites. Allow four to six weeks for delivery. Must be 18 to access. Disclaimer does not cover misuse, accident, lightning, flood, tornado, tsunami, volcanic eruption, earthquake, hurricanes and other Acts of God, neglect, damage from improper use, incorrect line voltage, improper or unauthorized use, broken antenna or marred cabinet, missing or altered serial numbers, electromagnetic radiation from nuclear blasts, sonic boom vibrations, customer adjustments that are not covered in this list, and incidents owing to an airplane crash, ship sinking or taking on water, motor vehicle crashing, dropping the item, falling rocks, leaky roof, broken glass, mud slides, forest fire, or projectile (which can include, but not be limited to, arrows, bullets, shot, BB's, shrapnel, lasers, napalm, torpedoes, or emissions of X-rays, Alpha, Beta and Gamma rays, knives, stones, etc.). Author and all other related parties shall not be liable for any damages, either direct or indirect, including but not limited to lost profits, lost savings, or any other damages, either material or immaterial, arising from the use, or from the inability to use, the pages on this website. Other restrictions may apply. This supersedes all previous notices.</p>
+                      <p>In addition, any material that is downloaded or otherwise obtained through our services is done at user's own discretion and risk, and the user will be solely responsible for any potential damages to his/her computer system or loss of data that results from the downloading of such material. Neither Three-Initial Corporation (T.I.C.) nor its staff is responsible or liable for any malicious code, delays, inaccuracies, errors, or omissions arising out of the use of our services or products. The user assumes the entire risk as to the quality, accuracy, performance, timelines, adequacy, completeness, correctness, authenticity, security and validity of any and all features and functions of our services and products including materials associated with the use of our services. Under no circumstances shall any of Three-Initial Corporation (T.I.C.) management be liable for any loss or damage caused by the user's reliance on information obtained through our services and products. It is the user's responsibility to evaluate the information, opinion, advice, or other contents available through our services.</p>
+                      <p> Three-Initial Corporation (T.I.C.) does not provide medical advice nor does it endorse any specific site. The information that is made available through our products and services is meant to support, not replace, the relationship that exists between a site user and his/her legally liable sources of information. We have no control over the contents of websites that our search engine searches from. We seek to include reputable websites. However, we do not claim nor guarantee that all of the information returned by our search engine is  reputable and current. Materials returned by our search engine offer the views of individual authors and agencies and do not necessarily represent or imply approval or recommendation by Three-Initial Corporation (T.I.C.) as a whole. Three-Initial Corporation (T.I.C.) and its staff is not responsible or liable, directly or indirectly, for any form of damages resulting from the use of information contained or implied in this website or in websites returned by our search engine.</p>
+                      <p>All the information on this website is published in good faith and for general information purpose only. Three-Initial Corporation (T.I.C.) does not make any warranties about the completeness, reliability and accuracy of this information. Any action you take upon the information on this website is strictly at your own risk, and Three-Initial Corporation (T.I.C.) will not be liable for any losses and damages in connection with the use of this website.</p>
+                      <p>From this website, you can visit other websites by following hyperlinks to these sites. While Three-Initial Corporation (T.I.C.) strives to provide only links to useful and ethical websites, we have no control over the content and nature of these sites, and the links to other websites do not imply a recommendation for all the content found on these sites.</p>
+                      <p>Please be aware that when you leave this website, other sites may have different privacy policies and terms.</p>
+                      <p>Privacy: </p>
+                      <p>This website uses Google Analytics to help analyse how visitors use this site. Google Analytics uses &quot;cookies&quot;, which are small text files placed on your computer, to collect standard internet log information and visitor behaviour information in an anonymous form. Note the deliberate emphasis of anonymous, as no personally identifiable information is collected about you unless you explicitly submit that information on this website.<br>
+                        ​<br>
+                        The anonymous information generated by Google Analytics cookies about your use of this website is transmitted to Google – not Three-Initial Corporation (T.I.C.). This information is processed to compile statistical reports on website activity for this site only. Three-Initial Corporation (T.I.C.) uses these reports to evaluate aggregate visitor usage. </p>
+                      <p>For further information about how Google Analytics uses cookies and IP address data, see: <a href="http://www.google.com/intl/en/analytics/privacyoverview.html">http://www.google.com/intl/en/analytics/privacyoverview.html</a>.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#waiver">I really read the disclaimer and agree to it</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="waiver" tabindex="-1" role="dialog" aria-labelledby="waiverModalLabel">
+                <div class="modal-dialog  modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#charges" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="waiverModalLabel">Waiver for searching</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4>Waiver</h4>
+                      <p>This Search Engine Agreement (&quot;Agreement&quot;) is hereby entered into between you, your employees and agents (collectively &quot;Customer&quot;) and applies to the use of all Search Engine Services (hereinafter collectively referred to as &quot;Search Engine Services&quot;) enacted by Customer.</p>
+                      <ol>
+                        <li>
+                          <p><strong>Term and Termination –</strong> This Agreement shall be effective as of the time frame Customer uses Search Engine Services. This Agreement may be terminated by either party upon written notice to the other, if the other party breaches any material obligation provided hereunder and the breaching party fails to cure such breach within thirty (30) days of receipt of the notice. This Agreement may be terminated by Three-Initial Corporation (T.I.C.) (i) immediately if Customer fails to follow any procedures or processes hereunder; or (ii) if Customer fails to cooperate with Three-Initial Corporation (T.I.C.) or hinders Three-Initial Corporation (T.I.C.)'s ability to perform the Search Engine Services hereunder.</p>
+                        </li>
+                        <li>
+                          <p><strong>Search Engine Services –</strong> Three-Initial Corporation (T.I.C.) agrees to provide Customer with Search Engine Services as described in this Agreement. Three-Initial Corporation (T.I.C.) is authorized to use the specific keywords and/or phases provided by Customer for development, improving the ranking of, and/or positioning the contents of the content's URL(s) in search engines and/or directories. Search Engine Services are intended to provide the Customer with preferential information in selected searches and report results on an ongoing and timely basis. Search Engine Services include:</p>
+                          <ul>
+                            <li>
+                              <p>Return results, based on keywords and phrases to select appropriate, relevant searches.</p>
+                            </li>
+                            <li>
+                              <p>Submit Three-Initial Corporation (T.I.C.)'s pages to search engines and directories as set forth in this Agreement.</p>
+                            </li>
+                            <li>
+                              <p> Modify the title tags, meta tags, content, HTML code, URLs and other on-page factors.</p>
+                            </li>
+                            <li>
+                              <p> Create positioning reports showing rankings in the major search engines and under which keywords.</p>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <p> <strong>Fees; Limitations on Refunds and Cancellation Fees –</strong> Customer agrees to pay Three-Initial Corporation (T.I.C.) any and all taxes as billed in accordance with this Agreement. The tae payments must be received prior to the start of any Search Engine Services. THE CUSTOMER FURTHER AGREES THAT, IN THE EVENT OF ANY TERMINATION OF THIS AGREEMENT BY CUSTOMER, NO REFUNDS SHALL BE GIVEN UNDER ANY CIRCUMSTANCES WHATSOEVER. THE CUSTOMER FURTHER AGREES TO PAY UPON CANCELLATION THE AMOUNT OF ANY CANCELLATION FEES OR OTHER AMOUNTS DUE TO Three-Initial Corporation (T.I.C.) AS PROVIDED IN THE AGREEMENT. Three-Initial Corporation (T.I.C.) IS HEREBY AUTHORIZED TO CHARGE CUSTOMER'S CREDIT CARD ACCOUNT OR OTHER PAYMENT MECHANISM FOR ANY TAX AMOUNTS OWED FROM TIME TO TIME BY CUSTOMER TO Three-Initial Corporation (T.I.C.).</p>
+                        </li>
+                        <li>
+                          <p><strong>Customer Responsibilities –</strong> For the purposes of providing these services, Customer agrees:</p>
+                          <ul>
+                            <li>
+                              <p>To provide Three-Initial Corporation (T.I.C.) with  access to its web searches for  pages, and making changes for the purpose of Search Engine Services optimization or approval to go through a third party.</p>
+                            </li>
+                            <li>
+                              <p> To authorize Three-Initial Corporation (T.I.C.) use of all Web site searches, etc., for use in creating informational pages and any other uses as deemed necessary by Three-Initial Corporation (T.I.C.) for content positioning and optimization.</p>
+                            </li>
+                            <li>
+                              <p> That if Customer's web search is light in textual content, Three-Initial Corporation (T.I.C.) will provide additional relevant text content in electronic format for the purpose of creating additional web pages.</p>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <p><strong>Customer Acknowledgements –</strong> Customer understands, acknowledges and agrees that:</p>
+                          <ul>
+                            <li>
+                              <p>Three-Initial Corporation (T.I.C.) has no control over the policies of search engines or directories with respect to the type of sites and/or content that they accept now or in the future. Three-Initial Corporation (T.I.C.)'s content may be excluded from any search engine or directory at any time at the sole discretion of the search engine or directory entity. </p>
+                            </li>
+                            <li>
+                              <p> Some search engines and directories may take as long as two (2) to four (4) months, and in some cases longer, after submission to list Three-Initial Corporation (T.I.C.)'s web site(s). Occasionally, search engines and directories will stop accepting submissions for an indefinite period of time. Occasionally, search engines and directories will drop listings for no apparent or predictable reason. Often, listings will &quot;reappear&quot; without any additional submissions. </p>
+                            </li>
+                            <li>
+                              <p> Some search engines and directories offer expedited listing services for a fee. Three-Initial Corporation (T.I.C.) does not have the budget to take advantage of these expedited services. Customer is responsible for all expedited service fees.</p>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <p> <strong>Web Site Changes –</strong> Three-Initial Corporation (T.I.C.) is not responsible for changes made to Customer by other parties that adversely affect the customer's ability to pay taxes.</p>
+                        </li>
+                        <li>
+                          <p><strong>Additional Services –</strong> Additional services not listed herein will be provided for a fee of $130.00 per hour. Three-Initial Corporation (T.I.C.) is not responsible for developing new content or writing new copy for its agencies. Agencies will be charged an additional fee for writing content, based on the hourly rate of $130.00 per hour.</p>
+                        </li>
+                        <li>
+                          <p><strong>Indemnification –</strong> Customer shall indemnify and hold harmless Three-Initial Corporation (T.I.C.) (and its subsidiaries, affiliates, officers, agents, co-branders or other partners, and employees) from any and all claims, damages, liabilities, costs, and expenses (including, but not limited to, reasonable attorneys' fees and all related costs and expenses) incurred by Three-Initial Corporation (T.I.C.) as a result of any claim, judgment, or adjudication against Three-Initial Corporation (T.I.C.) related to or arising from (a) any photographs, illustrations, graphics, audio clips, video clips, text, data or any other information, content, display, or material (whether written, graphic, sound, or otherwise) provided by Three-Initial Corporation (T.I.C.) (the &quot;Agency Content&quot;), or (b) a claim that Three-Initial Corporation (T.I.C.)'s use of the Agency Content infringes the intellectual property rights of a third party. To qualify for such defense and payment, Three-Initial Corporation (T.I.C.) must: (i) give Customer prompt written notice of a claim; and (ii) allow Customer to control, and fully cooperate with Customer in, the defense and all related negotiations.</p>
+                        </li>
+                        <li>
+                          <p><strong>Disclaimer of All Other Warranties –</strong> Three-Initial Corporation (T.I.C.)DOES NOT WARRANT THAT THE SEARCH ENGINE SERVICES WILL MEET THE CUSTOMER'S EXPECTATIONS OR REQUIREMENTS. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE IS WITH CUSTOMER. EXCEPT AS OTHERWISE SPECIFIED IN THIS AGREEMENT, Three-Initial Corporation (T.I.C.) PROVIDES ITS SERVICES &quot;AS IS&quot; AND WITHOUT WARRANTY OF ANY KIND. THE PARTIES AGREE THAT (A) THE LIMITED WARRANTIES SET FORTH IN THIS SECTION ARE THE SOLE AND EXCLUSIVE WARRANTIES PROVIDED BY EACH PARTY, AND (B) EACH PARTY DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, RELATING TO THIS AGREEMENT, PERFORMANCE OR INABILITY TO PERFORM UNDER THIS AGREEMENT, THE CONTENT, AND EACH PARTY'S COMPUTING AND DISTRIBUTION SYSTEM. IF ANY PROVISION OF THIS AGREEMENT SHALL BE UNLAWFUL, VOID, OR FOR ANY REASON UNENFORCEABLE, THEN THAT PROVISION SHALL BE DEEMED SEVERABLE FROM THIS AGREEMENT AND SHALL NOT AFFECT THE VALIDITY AND ENFORCEABILITY OF ANY REMAINING PROVISIONS.</p>
+                        </li>
+                        <li>
+                          <p><strong>Limited Liability –</strong> IN NO EVENT SHALL Three-Initial Corporation (T.I.C.) BE LIABLE TO CUSTOMER FOR ANY INDIRECT, SPECIAL, EXEMPLARY OR CONSEQUENTIAL DAMAGES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR IMPLIED WARRANTIES ARISING FROM COURSE OF DEALING OR COURSE OF PERFORMANCE, LOST PROFITS, WHETHER OR NOT FORESEEABLE OR ALLEGED TO BE BASED ON BREACH OF WARRANTY, CONTRACT, NEGLIGENCE OR STRICT LIABILITY, ARISING UNDER THIS AGREEMENT, LOSS OF DATA, OR ANY PERFORMANCE UNDER THIS AGREEMENT, EVEN IF SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES AND NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY PROVIDED HEREIN. THERE SHALL BE NO REFUNDS. Three-Initial Corporation (T.I.C.) MAKES NO WARRANTY OF ANY KIND, WHETHER EXPRESS OR IMPLIED, WITH REGARD TO ANY THIRD PARTY PRODUCTS, THIRD PARTY CONTENT OR ANY SOFTWARE, EQUIPMENT, OR HARDWARE OBTAINED FROM THIRD PARTIES.</p>
+                        </li>
+                        <li>
+                          <p><strong>Customer Representations –</strong> Customer makes the following representations and warranties for the benefit of Three-Initial Corporation (T.I.C.):</p>
+                          <ul>
+                            <li>
+                              <p>Customer represents to Three-Initial Corporation (T.I.C.) and unconditionally guarantees that any elements of text, graphics, photos, designs, trademarks, or other artwork furnished by Three-Initial Corporation (T.I.C.) are owned by Three-Initial Corporation (T.I.C.), or that Customer has permission from the rightful owner to use each of these elements, and will hold harmless, protect, and defend Three-Initial Corporation (T.I.C.) and its subcontractors from any claim or suit arising from the use of such elements.</p>
+                            </li>
+                            <li>
+                              <p> Customer guarantees any elements of text, graphics, photos, designs, trademarks, or other artwork provided to Three-Initial Corporation (T.I.C.) for inclusion on the website above are owned by Customer, or that Customer has received permission from the rightful owner(s) to use each of the elements, and will hold harmless, protect, and permission from the rightful owner(s) to use each of the elements, and will hold harmless, protect, and defend Three-Initial Corporation (T.I.C.) and its subcontractors from any liability or suit arising from the use of such elements. </p>
+                            </li>
+                            <li>
+                              <p> From time to time governments enact laws and levy taxes and tariffs affecting Internet electronic commerce. Customer agrees that the client is solely responsible for complying with such laws, taxes, and tariffs, and will hold harmless, protect, and defend Three-Initial Corporation (T.I.C.) and its subcontractors from any claim, suit, penalty, tax, or tariff arising from Customer's exercise of Internet electronic commerce.</p>
+                            </li>
+                          </ul>
+                        </li>
+                        <li>
+                          <p> <strong>Confidentiality –</strong> The parties agree to hold each other's Proprietary or Confidential Information in strict confidence. &quot;Proprietary or Confidential Information&quot; shall include, but is not limited to, written or oral contracts, trade secrets, know-how, business methods, business policies, memoranda, reports, records, computer retained information, notes, or financial information. Proprietary or Confidential Information shall not include any information which: (i) is or becomes generally known to the public by any means other than a breach of the obligations of the receiving party; (ii) was previously known to the receiving party or rightly received by the receiving party from a third party; (iii) is independently developed by the receiving party; or (iv) is subject to disclosure under court order or other lawful process. The parties agree not to make each other's Proprietary or Confidential Information available in any form to any third party or to use each other's Proprietary or Confidential Information for any purpose other than as specified in this Agreement. Each party's proprietary or confidential information shall remain the sole and exclusive property of that party. The parties agree that in the event of use or disclosure by the other party other than as specifically provided for in this Agreement, the non-disclosing party may be entitled to equitable relief. Notwithstanding termination or expiration of this Agreement, Three-Initial Corporation (T.I.C.) and Customer acknowledge and agree that their obligations of confidentiality with respect to Proprietary or Confidential Information shall continue in effect for a total period of three (3) years from the effective date.</p>
+                        </li>
+                        <li>
+                          <p><strong>Force Majeure – </strong>Neither party will be liable for, or will be considered to be in breach of or default under this Agreement on account of, any delay or failure to perform as required by this Agreement as a result of any causes or conditions that are beyond such Party's reasonable control and that such Party is unable to overcome through the exercise of commercially reasonable diligence. If any force majeure event occurs, the affected Party will give prompt written notice to the other Party and will use commercially reasonable efforts to minimize the impact of the event.</p>
+                        </li>
+                        <li>
+                          <p><strong>Relationship of Parties –</strong> Three-Initial Corporation (T.I.C.), in rendering performance under this Agreement, shall be deemed an independent contractor and nothing contained herein shall constitute this arrangement to be employment, a joint venture, or a partnership. Customer does not undertake by this Agreement, or otherwise, to perform any obligation of Three-Initial Corporation (T.I.C.), whether by regulation or contract. In no way is Three-Initial Corporation (T.I.C.) to be construed as the agent or to be acting as the agent of Customer in any respect, any other provisions of this Agreement notwithstanding.</p>
+                        </li>
+                        <li>
+                          <p><strong>Notice and Payment –</strong> Any notice required to be given under this Agreement shall be in writing and delivered personally to the other designated party, mailed by certified, registered or Express mail, return receipt requested or by Federal Express. Either party may change its address to which notice or payment is to be sent by written notice to the other under any provision of this paragraph.</p>
+                        </li>
+                        <li>
+                          <p><strong>Jurisdiction/Disputes –</strong> This Agreement shall be governed in accordance with the laws of the State of Washington. All disputes under this Agreement shall be resolved by litigation in the courts of the State of Washington including the federal courts therein and the Parties all consent to the jurisdiction of such courts, agree to accept service of process by mail, and hereby waive any jurisdictional or venue defenses otherwise available to it.</p>
+                        </li>
+                        <li>
+                          <p><strong>Agreement Binding on Successors –</strong> The provisions of the Agreement shall be binding upon and shall inure to the benefit of the Parties hereto, their heirs, administrators, successors and assigns.</p>
+                        </li>
+                        <li>
+                          <p><strong>Assignability –</strong> Customer may not assign this Agreement or the rights and obligations thereunder to any third party without the prior express written approval of Three-Initial Corporation (T.I.C.). Three-Initial Corporation (T.I.C.) reserves the right to assign subcontractors as needed to this project to ensure on-time completion.</p>
+                        </li>
+                        <li>
+                          <p><strong>Waiver –</strong> No waiver by either party of any default shall be deemed as a waiver of prior or subsequent default of the same of other provisions of this Agreement.</p>
+                        </li>
+                        <li>
+                          <p><strong>Severability – </strong>If any term, clause or provision hereof is held invalid or unenforceable by a court of competent jurisdiction, such invalidity shall not affect the validity or operation of any other term, clause or provision and such invalid term, clause or provision shall be deemed to be severed from the Agreement.</p>
+                        </li>
+                        <li>
+                          <p><strong>No Inference Against Author –</strong> No provision of this Agreement shall be interpreted against any Party because such Party or its legal representative drafted such provision.</p>
+                        </li>
+                        <li>
+                          <p><strong>Disputes – </strong>Customer and Three-Initial Corporation (T.I.C.) agree to make a good-faith effort to resolve any disagreement arising out of, or in connection with, this Agreement through negotiation. Should the parties fail to resolve any such disagreement within ten (10) days, any controversy or claim arising out of or relating to this Agreement, including, without limitation, the interpretation or breach thereof, shall be submitted by either party to arbitration in Three-Initial Corporation (T.I.C.), Washington and in accordance with the Commercial Arbitration Rules of the American Arbitration Association. The arbitration shall be conducted by one arbitrator, who shall be (a) selected in the sole discretion of the American Arbitration Association administrator and (b) a licensed attorney with at least ten (10) years experience in the practice of law and at least five (5) years experience in the negotiation of technology contracts or litigation of technology disputes. The arbitrator shall have the power to enter any award that could be entered by a judge of the state courts of Washington sitting without a jury, and only such power, except that the arbitrator shall not have the power to award punitive damages, treble damages, or any other damages which are not compensatory, even if permitted under the laws of the State of Washington or any other applicable law. The arbitrator must issue his or her resolution of any dispute within thirty (30) days of the date the dispute is submitted for arbitration. The written decision of the arbitrator shall be final and binding and enforceable in any court having jurisdiction over the parties and the subject matter of the arbitration. Notwithstanding the foregoing, this Section shall not preclude either party from seeking temporary, provisional, or injunctive relief from any court.</p>
+                        </li>
+                        <li>
+                          <p><strong>Read and Understood – </strong>Each Party acknowledges that it has read and understands this Agreement and agrees to be bound by its terms and conditions.</p>
+                        </li>
+                      </ol>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#charges">I agree to this waiver</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="charges" tabindex="-1" role="dialog" aria-labelledby="chargesModalLabel">
+                <div class="modal-dialog  modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#os" aria-label="Close"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="chargesModalLabel">Acknowledgement for potential charges</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4>Potential charges</h4>
+                      <div title="Page 1">
+                        <div>
+                          <div>
+                            <p>As a locally elected and acountable best-run corporation, Three-Initial Corporation (T.I.C.) has a number of responsibilities to the individuals and families we serve. Our  responsibilities are defined and limited by the elected and appointed positions our leaders hold. Your understanding of what we can  and cannot do for you is very important. Your elected local leadership has an obligation to have reasonable grounds for believing that you are responsible for ensuring that any search that you make is suitable for you, and that any financial considerations that arise from said searches, or any expenditures that you choose to make as a result of said searches, will incur charges for which you must assume responsibility. </p>
+                          </div>
+                        </div>
+                        <div>
+                          <div>
+                            <ol>
+                              <li>
+                                <p><strong>Role of Three-Initial Corporation (T.I.C.) in a charges resulting from a Web search</strong><br/>
+                                  I have been informed that I am a Three-Initial Corporation (T.I.C.) Website user and am authorized to incur charges, including the exchange of money with individuals and instututions not authorized by Three-Initial Corporation (T.I.C.), regardless of whether or not I have ever used the search engine on three-initial-corporation.com. I have been  informed that Three-Initial Corporation (T.I.C.) does not charge for advice and advisory services, and is not responsible for anything I buy from anyone who is not Three-Initial Corporation (T.I.C.). </p>
+                              </li>
+                              <li>
+                                <p><strong>Charges may be incurred regardless of search suitability</strong><br/>
+                                  I have been informed that I have an obligation to have reasonable grounds for  believing that any recommendation to purchase or exchange money on the Interent is suitable based upon the facts that I  have provided including risk tolerance, financial situation, and stated financial goals and objectives, and that Three-Initial Corporation (T.I.C.) is neither obliged nor authorized to oversee my individual use of my own money beyond doing business with the company, paying taxes, or ensuring that I do not engage in illegal financial transactions. </p>
+                              </li>
+                              <li>
+                                <p><strong>Charges and search features</strong><br/>
+                                  I have been informed of various features of the Search Engine, such as the potential content expiration period and surrender  charge, potential tax penalty if the consumer sells, exchanges, surrenders or annuitizes theier taxable property, mortality  and expense fees, investment advisory fees, potential charges for and features of riders, limitations on interest  returns, insurance and investment components and market risk. </p>
+                              </li>
+                              <li>
+                                <p><strong>Charges and search  advice described</strong><br/>
+                                  I understand that the Three-Initial Corporation (T.I.C.) search engine is authorized to programatically assess my search situation,  needs, and objectives in order to provide search results as part of my overall search plan, but it is up to me to determine  that the question of whether to act on the search results  is suitable for me. I have been informed that any search on the Internet may affect the financial resources generally available for me, including my  existing assets, and that this may include dissing the stock market and other investment types in general  terms, including market risks and recent or historic economic events and activities. I acknowledge that  Three-Initial Corporation (T.I.C.) did not offer any investment advice or recommendation regarding the liquidation  or identification of any securities that might be used to fund the purchase of anything I find in a Web search. The decision of  which resources to use to fund a purchase is solely my own. </p>
+                              </li>
+                              <li>
+                                <p><strong>Disclosures</strong><br/>
+                                  I acknowledge and believe that the Three-Initial Corporation (T.I.C.) has not given me investment advice in any transaction or service.  If I require investment, legal, or tax advice, I will seek the services of an attorney, tax adviser, investment  advisor representative or other appropriately-licensed professional. </p>
+                              </li>
+                            </ol>
+                            <p>By clicking below, I acknowledge that I have read and fully understand this information, and that I can  receive a blank copy of this Disclosure and Acknowledgment from a Three-Initial Corporation (T.I.C.) Public Disclosure Officer. </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#os">Continue</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="os" tabindex="-1" role="dialog" aria-labelledby="osModalLabel">
+                <div class="modal-dialog  modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#results" aria-label="Close" onclick="javascript:noResult()"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="osModalLabel">Search might not work with your operating system</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4>The operating system you are using might not be one we have tested</h4>
+                      <p>An operating system (called an OS for short) is a set of programs that runs your computer. A computer is made of hardware (your monitor, hard disk, motherboard and so on) and software (for example your word processor, and the web browser you are reading this on right now). The job of the operating system is to tell the hardware how it should operate, and how the software should use the hardware. It also provides the basic user interface - the thing that tells you where your files are, how to open them, close them and so on.</p>
+                      <p>You are probably familiar with the Windows operating system, but there are many different types of windows OS, and many other operating systems that are completely different. These are not supported.</p>
+                      <p>All the hardware on your computer has a program called a 'driver'. For a piece of hardware to run it needs to have a driver written for the OS of the computer it is plugged into. The driver tells the OS what the hardware is, and how it should be used. Even if the same hardware can be used on several different operating systems, it needs a separate driver for each of them. This means that if you want to change your OS, you need to check carefully that your hardware has drivers for the new OS or the hardware will stop working. Hardware is not supported.</p>
+                      <p>If an operating system gets into trouble, it might stop working and your computer will crash. This is not supported. Because a crashed windows OS often leaves its final words in white on a blue background, you may hear of people talking about a BSOD (blue screen of death). The important thing required of a modern OS is that it should be stable (i.e. that it should not crash), that it can multi-task (do several different things at once), be powerful (be able to deal with large hard disks, lots of files, and large amounts of RAM) and that it should be secure (so that hackers and viruses cannot damage it). It should be user-friendly (so that users can do what they want in a simple uncomplicated way). It should not involve something called &quot;Internet Explorer,&quot; and it should never, ever come into contact with something called &quot;SharePoint.&quot;</p>
+                      <p>For many years there were three main operating systems. Windows replaced MS-DOS as the main OS on most desktop computers, while a smaller number of radical vegetarian anarchist food hippies were dedicated to their Apple computers and their completely different OS, which is not supported. However, more powerful computers which ran networks used a more complex, flexible and powerful OS called Unix, which is not supported. A new arrival called Linux has since enthused computer enthusiasts. Linux is powerful, stable and secure, though many people complain that it is not yet very user-friendly. The interesting thing about Linux is that it has not been written by one person or company, but by hundreds of programmers all around the world who all contribute as individuals. There are many different flavours of Linux, such as Ubuntu, Fedora and SUSE. Linux is not supported.</p>
+                      <p>In the last few years,'live' versions of Linux operating systems have been distributed on bootable CDs. This means that you can put the CD in your computer, and run Linux from there, so that you can see if you like it before you install it on your computer's hard disk. This is not supported.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#results" onClick="javascript:noResult()">I' dont' care, I'll risk it, just search already!</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="results" tabindex="-1" role="dialog" aria-labelledby="resultsModalLabel">
+                <div class="modal-dialog  modal-lg" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" aria-label="Close"  data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                      <h4 class="modal-title" id="resultsModalLabel">No results</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4>We found no results for your search term</h4>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" data-dismiss="modal" class="btn btn-default">Search again</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+<script>
+      // setting some counters
+      let focuscounter = 1;
+      let colorcounter = 1;
+      // getting a bunch of elements
+      const male = document.getElementById("mr");
+      const female = document.getElementById("ms");
+      const thecoach = document.getElementById("coach");
+      const firstname = document.getElementById("first-name");
+      const lastname = document.getElementById("last-name");
+      const age = document.getElementById("age");
+      const sw = document.getElementById("sw");
+      const emailentry = document.getElementById("email-entry");
+      const problemtype = document.getElementById("problem-types");
+      // getting the first CSS rule (body)
+      let bodstyle = (document.styleSheets[1].cssRules[0]);
+
+      // put first name in last name box and vice versa
+      function swapNames() {
+        let first = firstname.value;
+        let last = lastname.value;
+        firstname.value = last;
+        lastname.value = first;
+        return;
+      }
+
+      // The women shall be men, the men women, the coaches fossils
+      //
+      function changeTitle() {
+        if (male.checked && focuscounter == 1) {
+          // increment the focus counter here so it's no longer 1; we only run this once
+          focuscounter++;
+          alert("Neener neener, you're a girl!");
+          female.checked = true;
+          sw.focus();
+          return;
+        } else if (female.checked && focuscounter == 1) {
+          focuscounter++;
+          male.checked = true;
+          alert("You don't look like a girl to me!");
+          sw.focus();
+          return;
+        } else if (thecoach.checked && focuscounter == 1) {
+          focuscounter++;
+          alert("Coach? Seriously? You're a fossil!");
+          document.getElementById("coach-label").innerHTML = "Fossil";
+          sw.focus();
+          return;
+        }
+        onclick= function() {
+          // We run this once, if they correct the salutation title
+          if (focuscounter == 2) {
+              focuscounter++;
+              alert("Okay, fine, you can pretend to be whatever you want; it's not like I care.")
+              return;
+            }
+          }
+      }
+
+      function switchColors() {
+       if(colorcounter % 2 == 0) {
+          document.body.style.setProperty("color","lightcoral");
+          document.body.style.setProperty("background-color","black");
+          colorcounter++; 
+        }      
+        else {
+          document.body.style.setProperty("color","black");
+          document.body.style.setProperty("background-color","lightcoral");
+          colorcounter++;
+        }
+        return;
+      }
+
+    function returnColors() {
+      document.body.style.setProperty("color","black");
+      document.body.style.setProperty("background-color","lightcoral");
+      // change the page heading and the page title
+        document.getElementById("main-heading").innerText = "Welcome, Lamestain";
+        document.getElementById("pagetitle").innerText = "Crap Monkeys";
+      return;
+    }
+    function changeFont() {
+      sw.style.cssText=`font-family: wingdings; font-size: 1.5em`;
+      return;
+    }
+    function fixAge() {
+      let age1 = Number(age.value);
+      let agecounter = 1;
+      if (agecounter == 1) {
+        if (male.checked) {
+          // men like to be older
+          age1 = age1 -= 10;
+          age.value = age1;
+          alert("Sir, we don't serve children. (They're high in cholesterol.) Seriously, go get a grownup.");
+          agecounter ++;
+          sw.focus();
+          return;
+        }
+        if (female.checked) {
+          // age discrimination against women is real
+          age1 = age1 += 10;
+          age.value = age1;
+          alert("Gee, lady, you're old!");
+          agecounter++
+          sw.focus();
+          return;
+        }
+        if (thecoach.checked) {
+          age1 = age1 += 87;
+          alert("Yep, you're a fossil all right.");
+          sw.focus();
+          agecounter++
+          return;
+        }
+      }
+    }
+
+    function goAway() {
+      // this field will slide out of range and fade away
+      emailentry.style.cssText = `
+        opacity: 0%;
+        transition: opacity 1s;
+        animation-duration: 3s;
+        animation-name: slideout;`
+      fixEmail();
+      return;
+    }
+
+    function delay(milliseconds) {
+        return new Promise(resolve => {
+          setTimeout(resolve, milliseconds);
+        });
+    }
+
+    async function fixEmail() {
+      await delay(1000)
+      //we are going to adjust the user's email address a little
+      document.getElementById("email").value = "imadoofus@bozo.com";
+      return;
+    }
+
+    function comeBack() { 
+      // this field will fade back in and slide back into place
+      emailentry.style.cssText = `opacity: 100%;
+      transition: opacity 1s;
+      animation-duration: 3s;
+      animation-direction: reverse;
+      animation-name: slideout;`
+      return;
+    }
+
+    function problemType() {
+      // change that font back
+      sw.style.setProperty("font-family","inherit");
+      // no matter what you choose, it's always going to change to this
+      problemtype.options[problemtype.selectedIndex].text = "I am an idiot who should not use anything more technical than a donut";
+      return;
+    }
+
+    function changeOpacity() {
+      let opacitypercent = 100;
+      // every time they let go of a key, we cut the opacity
+      onkeyup = function() {
+        opacitypercent = opacitypercent/1.1;
+        bodstyle.style.setProperty("opacity", opacitypercent +"%");
+      return;
+      }
+    }
+    function fixOpacity() {
+      // return the page contents to full opacity
+      bodstyle.style.setProperty("opacity", "100%");
+      return;
+    }
+
+    // More ideas:
+    // On focus in some field, move focus to another field so they type in the wrong place
+    // Have fun!
+    //
+    </script> 
+<script src="js/bootstrap.js"></script> 
+<script>
+       $(function() {
+          var handle = $( "#custom-handle" );
+          $( "#slider" ).slider({
+          
+            range: false,
+            min: 1000000000,
+            max: 9999999999, 
+            step: 1,
+            create: function() {
+            
+              handle.text( $( this ).slider( "value" ) );
+              var j = $( this ).slider( "value" ).toString();
+          var k = j.substr(0, 3) + '-' + j.substr(3, 3) + '-' + j.substr(6,4);
+              handle.text( k );
+            },
+            slide: function( event, ui ) {
+            var j = ui.value.toString();
+          var k = j.substr(0, 3) + '-' + j.substr(3, 3) + '-' + j.substr(6,4);
+              handle.text( k );
+            }
+          });
+        } );
+    </script>
+</body>
+</html>

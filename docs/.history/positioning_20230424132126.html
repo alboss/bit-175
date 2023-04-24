@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous" />
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"></script>
+    <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
+    <base target="example-page" />
+
+    <title>Positioning</title>
+    <style>
+      body {
+        border: 1px solid #000;
+        padding: 2em;
+      }
+      #everything {
+        border: 1px solid orange;
+        padding: 2em;
+        opacity: 100%;
+
+        text-align: center;
+      }
+      main {
+        padding: 2em;
+        border: 1px dashed blueviolet;
+        background-color: aliceblue;
+        opacity: 70%;
+      }
+      #thing-1,
+      #thing-2,
+      #thing-3 {
+        width: 33%;
+        padding: 2em;
+        margin: 2em;
+      }
+      #thing-1 {
+        margin: 2em;
+        background-color: aquamarine;
+      }
+      #thing-1-a {
+        background-color: azure;
+        position: relative;
+        top: 20px;
+        left: 15px;
+      }
+      #thing-1-a-a {
+        background-color: cornflowerblue;
+        position: relative;
+        right: 10px;
+      }
+      #thing-1-b {
+        background-color: darkslateblue;
+      }
+      #thing-1-c {
+        background-color: dodgerblue;
+        position: fixed;
+        margin-left: 33%;
+      }
+      #thing-2 {
+        margin: 2em;
+        background-color: chocolate;
+      }
+      #thing-2-a {
+        background-color: coral;
+      }
+      #thing-2-a-a {
+        background-color: goldenrod;
+        position: absolute;
+        right: 10px;
+      }
+      #thing-2-b {
+        background-color: khaki;
+      }
+      #thing-2-c {
+        background-color: peru;
+        position: absolute;
+        top: 20px;
+        left: 15px;
+        margin-right: 60%;
+      }
+      #thing-3 {
+        margin: 2em;
+        background-color: darkred;
+        color: #fff;
+      }
+
+      #thing-3-a {
+        background-color: crimson;
+      }
+      #thing-3-a-a {
+        background-color: darksalmon;
+      }
+      #thing-3-b {
+        background-color: indianred;
+      }
+      #thing-3-c {
+        background-color: lightsalmon;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="everything">
+      &lt;div id="everything"&gt;
+      <header>
+        &lt;header&gt;
+        <h1>Positioning</h1>
+      </header>
+      <main>
+        &lt;main&gt;
+        <div id="thing-1">
+          Thing 1
+          <h2>Relative</h2>
+          <div id="thing-1-a">
+            Thing 1-a
+            <div id="thing-1-a-a">
+              Thing 1-a-a
+              <p>
+                An element with position: relative; is positioned relative to
+                its normal position.
+              </p>
+            </div>
+          </div>
+          <div id="thing-1-b">Thing 1-b</div>
+          <div id="thing-1-c">
+            Thing-1-c
+            <p>Fixed</p>
+              <p>
+              An element with position: fixed; is positioned relative to the
+              viewport, which means it always stays in the same place even if
+              the page is scrolled. The top, right, bottom, and left properties
+              are used to position the element.
+            </p>
+
+            <p>
+              A fixed element does not leave a gap in the page where it would
+              normally have been located.
+            </p>
+          </div>
+        </div>
+        <div id="thing-2">
+          Thing 2
+          <div id="thing-2-a">
+            Thing-2-a
+            <h2>Absolute</h2>
+            <div id="thing-2-a-a">Thing 2-a-a
+              <p>position: absolute;
+        right: 10px;</p>
+              <p>An element with position: absolute; is positioned relative to the nearest positioned ancestor (instead of positioned relative to the viewport, like fixed).
+</p>
+<p>However; if an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling.
+</p>
+<p>Note: Absolute positioned elements are removed from the normal flow, and can overlap elements.</p>
+            </div>
+          </div>
+          <div id="thing-2-b">Thing 2-b</div>
+          <div id="thing-2-c">
+            Thing 2-c
+
+          
+          </div>
+        </div>
+        <div id="thing-3">
+          Thing 3
+          <h1>No positioning</h1>
+          <div id="thing-3-a">
+            Thing 3-a
+            <div id="thing-3-a-a">Thing 3-a-a</div>
+          </div>
+          <div id="thing-3-b">Thing 3b</div>
+          <div id="thing-3-c">Thing 3c</div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
