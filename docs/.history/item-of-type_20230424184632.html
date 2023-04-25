@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <style>
+      a.external:after {
+        content: " (external site) ";
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Using CSS to add content</h1>
+    <p>The book showed a great trick using <code>td:nth-of-type(5):before { content: "Mac “)</code>, which would put the word "Mac" in front of the 5th &lt;td&gt; in the table.</p>
+    <p>Don't.</p>
+    <p>It's super tempting. Let's say you want to label all your links to outside sites. You can use this handy code:</p>
+    <p><code>
+      &lt;style&gt;<br>
+      a.external:after {<br>
+        content: " (external site) ";<br>
+      }<br>
+    &lt;/style&gt;
+    </code></p>
+
+<p>Do the link HTML like this:</p>
+<p><code>&lt;a href="https://getbootstrap.com" class="external"&gt;</code></p>
+    <p><a href="./positioning.html">Positioning</a></p>
+    <p><a href="./bootstrap/index.html">Bootstrap demos</a></p>
+    <p><a href="https://getbootstrap.com" class="external">Bootstrap HQ</a></p>
+  </body>
+</html>

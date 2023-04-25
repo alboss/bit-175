@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <style>
+      a.external:after {
+        content: " (external site) ";
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Using CSS to add content</h1>
+    <p>
+      The book showed a great trick using
+      <code>td:nth-of-type(5):before { content: "Mac “)</code>
+      , which would put the word "Mac" in front of the 5th &lt;td&gt; in the
+      table.
+    </p>
+    <p>Don't.</p>
+    <p>
+      It's super tempting. Let's say you want to label all your links to outside
+      sites. You can use this handy code:
+    </p>
+    <p>
+      <code>
+        &lt;style&gt;
+        <br />
+        a.external:after {
+        <br />
+        content: " (external site) ";
+        <br />
+        }
+        <br />
+        &lt;/style&gt;
+      </code>
+    </p>
+
+    <p>Do the link HTML like this:</p>
+    <p>
+      <code>&lt;a href="https://getbootstrap.com" class="external"&gt;</code>
+    </p>
+    <p>You'll get this:</p>
+    <ul>
+      <li>
+        <p><a href="./positioning.html">Positioning</a></p>
+      </li>
+      <li>
+        <p><a href="./bootstrap/index.html">Bootstrap demos</a></p>
+      </li>
+      <li>
+        <p>
+          <a href="https://getbootstrap.com" class="external">Bootstrap HQ</a>
+        </p>
+      </li>
+    </ul>
+    <p>That is so awesome!</p>
+    <p>So, what's the problem? It looks perfect!</p>
+    <p>
+      And that's the problem. It
+      <em>looks</em>
+      perfect. However, you have used CSS (which is for display) to add content.
+      Accessibility software for blind people ignores CSS, because it's just
+      display information that's worthless if you can't see.
+    </p>
+    <p>
+      This means you have two different user experiences, and that sighted
+      people are getting important information (you're leaving the safety of our
+      site and getting sent out into the wilds of the Internet and we no longer
+      control what you will see). That's actually an accessibility violation; .
+    </p>
+  </body>
+</html>
