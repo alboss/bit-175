@@ -17,13 +17,46 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
     <link href="../styles/styles.css" rel="stylesheet" type="text/css" />
-    <base target="example-page" />
 
-    <title>Positioning - Bootstrap</title>
+    <title>Bootstrap</title>
     <style></style>
   </head>
   <body>
-    <h1>Positioning</h1>
+    <h1>Bootstrap</h1>
+    <p>
+      Here is a grid. The Bootstrap grid is 12 columns wide, and uses classes to
+      determine how wide an element is under the circumstances.
+    </p>
+    <ul>
+      <li>
+        <code>
+          &lt;div class="row"&gt;
+          <br />
+          &lt;div class="co0l col-md-2 col-sm-12"&gt;
+        </code>
+        will be 2/12 of the row (about 17%) on a screen that's greater than
+        767px wide, and 12/12 (100%) of the row on a screen smaller than 768px
+        wide.
+      </li>
+      <li>
+        <p>
+          <code>
+            &lt;div class="row"&gt;
+            <br />
+            &lt;div class="col"&gt;Something&lt;/div&gt;
+            <br />
+            &lt;div class="col"&gt;Something else&lt;/div&gt;
+            <br />
+            &lt;div class="col"&gt;Something completely different&lt;/div&gt;
+          </code>
+        </p>
+        <p>
+          Every
+          <code>&lt;div class="col"&gt;</code>
+          will add another column of equal width to the row.
+        </p>
+      </li>
+    </ul>
     <div class="row">
       <div class="col col-md-2">
         <img
@@ -31,37 +64,59 @@
           src="https://media.istockphoto.com/id/501904800/photo/hummingbird-andean-emerald.webp?s=1024x1024&w=is&k=20&c=3Xsg5ztIDgvVsOuY9d3qXK6HL3j7pOpJN6WOy_Y_gRo=" />
       </div>
       <div class="col col-md-2 col-sm-12">
-        <h2>Everything in this row is col-md-2 col-sm-12</h2>
+        <p>
+          Bootstrap typography changes the browser default typefaces, saving you
+          the trouble of doing it yourself.
+        </p>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+        <p class="lead"><code>&lt;p class="lead"&gt;</code><br>
+        This is a lead paragraph.</p>
+ <p>  <code>&lt;p&gt;</code><br>
+  This is a regular paragraph.</p>
+ <p class="small">  <code>&lt;p class="small"&gt;</code><br>
+  This is a small paragraph.</p>
       </div>
       <div class="col col-md-2 col-sm-12">
-        <p>
-          Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin
-          elit purus, sagittis sit amet accumsan et, consequat vitae sapien.
-          Vestibulum vehicula tellus quis commodo semper. Proin aliquam
-          ultricies nisl eu ultrices. Sed lobortis quam sem, eget sodales lorem
-          dignissim eget. Duis eros libero, dapibus sit amet vulputate
-          efficitur, sagittis quis felis. Vivamus porta tempor velit, sed
-          tincidunt orci suscipit quis. Nunc maximus lobortis eros, vitae
-          blandit diam sollicitudin ac. Integer pretium ex ut neque luctus, non
-          auctor velit congue. Cras tristique eros turpis, dapibus laoreet mi
-          egestas nec. Fusce a ultricies diam, non pulvinar ligula. Donec quis
-          ex arcu. Phasellus a est a felis porttitor ultricies.
-        </p>
+        <h2>Ordered List</h2>
+ <ol>
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+ </ol>
+ <h2>Unordered List</h2>
+ <ul>
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+ </ul>
       </div>
       <div class="col col-md-2">
-        <p>
-          Quisque mattis augue ac sapien elementum, nec porta odio fringilla.
-          Praesent ullamcorper justo quis bibendum mollis. Proin cursus metus
-          elit, in bibendum nibh ultricies pharetra. Pellentesque viverra velit
-          libero, sed commodo leo sodales ut. Donec dolor eros, dictum et nibh
-          sit amet, vulputate fringilla quam. Praesent in pharetra ante. Cras
-          quam dui, tincidunt ut ligula sed, dictum sodales velit. Quisque
-          lobortis lacinia mi non mattis. Ut nec est et tellus lobortis
-          tincidunt. Duis lorem mi, aliquam a velit ac, accumsan dapibus felis.
-          Nullam pharetra at nunc eget fringilla. Maecenas sollicitudin odio
-          risus, sed fermentum sem bibendum sed. Proin non ullamcorper augue.
-          Aliquam ullamcorper elit vitae pellentesque mollis.
-        </p>
+        <table class="table">
+  <thead>
+   <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td>Johen</td>
+    <td>johen@example.com</td>
+    <td>555-555-5555</td>
+   </tr>
+   <tr>
+    <td>Janess</td>
+    <td>janess@example.com</td>
+    <td>555-555-5555</td>
+   </tr>
+  </tbody>
+ </table>
       </div>
       <div class="col col-md-2">
         <p>
@@ -89,10 +144,6 @@
           aliquet nibh. Fusce dictum quis lorem vitae rutrum.
         </p>
       </div>
-    </div>
-    <div class="row">
-      <div class="col col-md-6 col-sm-12">col-md-6 col-sm-12</div>
-      <div class="col col-md-6 col-sm-12">col-md-6 col-sm-12</div>
     </div>
   </body>
 </html>

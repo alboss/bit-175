@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous" />
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"></script>
+    <link href="../styles/styles.css" rel="stylesheet" type="text/css" />
+
+    <title>Bootstrap</title>
+    <style></style>
+  </head>
+  <body>
+    <h1>Bootstrap</h1>
+    <p><i>Examples and text adapted from <a
+        href="https://bootcamp.uxdesign.cc/comprehensive-bootstrap-tutorial-ed4d79199aec"
+        target="_blank">
+        https://bootcamp.uxdesign.cc/comprehensive-bootstrap-tutorial-ed4d79199aec
+      </a>.</i></p>
+      <h2>Grid</h2>
+   <section> <p>
+      Here is a grid. The Bootstrap grid is 12 columns wide, and uses classes to
+      determine how wide an element is under the circumstances.
+    </p>
+    <ul>
+      <li>
+        <code>
+          &lt;div class="row"&gt;
+          <br />
+          &lt;div class="co0l col-md-2 col-sm-12"&gt;
+        </code>
+        will be 2/12 of the row (about 17%) on a screen that's greater than
+        767px wide, and 12/12 (100%) of the row on a screen smaller than 768px
+        wide.
+      </li>
+      <li>
+        <p>
+          <code>
+            &lt;div class="row"&gt;
+            <br />
+            &lt;div class="col"&gt;Something&lt;/div&gt;
+            <br />
+            &lt;div class="col"&gt;Something else&lt;/div&gt;
+            <br />
+            &lt;div class="col"&gt;Something completely different&lt;/div&gt;
+          </code>
+        </p>
+        <p>
+          Every
+          <code>&lt;div class="col"&gt;</code>
+          will add another column of equal width to the row.
+        </p>
+      </li>
+    </ul>
+    <div class="row">
+      <div class="col col-md-2 col-sm-12">
+        <img
+          class="img-fluid"
+          src="https://media.istockphoto.com/id/501904800/photo/hummingbird-andean-emerald.webp?s=1024x1024&w=is&k=20&c=3Xsg5ztIDgvVsOuY9d3qXK6HL3j7pOpJN6WOy_Y_gRo=" />
+      </div>
+      <div class="col col-md-4 col-sm-12">
+        <p>
+          Bootstrap typography changes the browser default typefaces, saving you
+          the trouble of doing it yourself.
+        </p>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+        <p class="lead">
+          <code>&lt;p class="lead"&gt;</code>
+          <br />
+          This is a lead paragraph.
+        </p>
+        <p>
+          <code>&lt;p&gt;</code>
+          <br />
+          This is a regular paragraph.
+        </p>
+        <p class="small">
+          <code>&lt;p class="small"&gt;</code>
+          <br />
+          This is a small paragraph.
+        </p>
+      </div>
+      <div class="col col-md-6 col-sm-12">
+        <h2>Ordered List</h2>
+        <ol>
+          <li>List item 1</li>
+          <li>List item 2</li>
+          <li>List item 3</li>
+        </ol>
+        <h2>Unordered List</h2>
+        <ul>
+          <li>List item 1</li>
+          <li>List item 2</li>
+          <li>List item 3</li>
+        </ul>
+      </div>
+    </div></section>
+    <h2>Bootstrap table</h2>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Johen</td>
+          <td>johen@example.com</td>
+          <td>555-555-5555</td>
+        </tr>
+        <tr>
+          <td>Janess</td>
+          <td>janess@example.com</td>
+          <td>555-555-5555</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <div class="col col-md-3">
+        <h2>Buttons</h2>
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+      </div>
+      <div class="col col-md-9">
+        <h2>How about some alert styles?</h2>
+        <div class="alert alert-success" role="alert">Success Alert</div>
+
+        <div class="alert alert-info" role="alert">Info Alert</div>
+
+        <div class="alert alert-warning" role="alert">Warning Alert</div>
+
+        <div class="alert alert-danger" role="alert">Danger Alert</div>
+      </div>
+    </div>
+    <h2>Alerts</h2>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Logo</a>
+
+      <!-- Links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </nav>
+    <p>
+      In the above example, we have used the navbar class to create a navigation menu. We have also
+      used the navbar-expand-sm class to make the navigation menu collapse on
+      smaller screens. The bg-dark and navbar-dark classes are used to give the
+      navigation menu a dark background color and light text color.
+    </p>
+    <h2>Modal windows</h2>
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#myModal">
+      Open Modal
+    </button>
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Title</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+
+          <div class="modal-body">Modal Body</div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p>
+      In the above example, we have used the data-toggle="modal" and
+      data-target="#myModal" attributes to activate the modal when the button is
+      clicked. We have also used the modal, modal-dialog, modal-content,
+      modal-header, modal-body, and modal-footer classes to create the modal.
+    </p>
+    <h2></h2>
+  </body>
+</html>

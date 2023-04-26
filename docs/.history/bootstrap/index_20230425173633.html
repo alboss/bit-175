@@ -17,13 +17,46 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"></script>
     <link href="../styles/styles.css" rel="stylesheet" type="text/css" />
-    <base target="example-page" />
 
-    <title>Positioning - Bootstrap</title>
+    <title>Bootstrap</title>
     <style></style>
   </head>
   <body>
-    <h1>Positioning</h1>
+    <h1>Bootstrap</h1>
+    <p>
+      Here is a grid. The Bootstrap grid is 12 columns wide, and uses classes to
+      determine how wide an element is under the circumstances.
+    </p>
+    <ul>
+      <li>
+        <code>
+          &lt;div class="row"&gt;
+          <br />
+          &lt;div class="co0l col-md-2 col-sm-12"&gt;
+        </code>
+        will be 2/12 of the row (about 17%) on a screen that's greater than
+        767px wide, and 12/12 (100%) of the row on a screen smaller than 768px
+        wide.
+      </li>
+      <li>
+        <p>
+          <code>
+            &lt;div class="row"&gt;
+            <br />
+            &lt;div class="col"&gt;Something&lt;/div&gt;
+            <br />
+            &lt;div class="col"&gt;Something else&lt;/div&gt;
+            <br />
+            &lt;div class="col"&gt;Something completely different&lt;/div&gt;
+          </code>
+        </p>
+        <p>
+          Every
+          <code>&lt;div class="col"&gt;</code>
+          will add another column of equal width to the row.
+        </p>
+      </li>
+    </ul>
     <div class="row">
       <div class="col col-md-2">
         <img
@@ -31,7 +64,20 @@
           src="https://media.istockphoto.com/id/501904800/photo/hummingbird-andean-emerald.webp?s=1024x1024&w=is&k=20&c=3Xsg5ztIDgvVsOuY9d3qXK6HL3j7pOpJN6WOy_Y_gRo=" />
       </div>
       <div class="col col-md-2 col-sm-12">
-        <h2>Everything in this row is col-md-2 col-sm-12</h2>
+        <p>
+          Bootstrap typography changes the browser default typefaces, saving you
+          the trouble of doing it yourself.
+        </p>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+        <p class="lead"><code>&lt;p class="lead"&gt;</code><br>
+        This is a lead paragraph.</p>
+ <p>This is a regular paragraph.</p>
+ <p class="small">This is a small paragraph.</p>
       </div>
       <div class="col col-md-2 col-sm-12">
         <p>
@@ -89,10 +135,6 @@
           aliquet nibh. Fusce dictum quis lorem vitae rutrum.
         </p>
       </div>
-    </div>
-    <div class="row">
-      <div class="col col-md-6 col-sm-12">col-md-6 col-sm-12</div>
-      <div class="col col-md-6 col-sm-12">col-md-6 col-sm-12</div>
     </div>
   </body>
 </html>
