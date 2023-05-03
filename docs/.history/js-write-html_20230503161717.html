@@ -23,7 +23,7 @@
     <title>Writing HTML with Javascript</title>
   </head>
   <body>
-    <header id="top"></header>
+    <header></header>
     <main>
       <h2>Some examples</h2>
       <div class="container border p-2 m-2" id="div1"></div>
@@ -56,9 +56,7 @@
           <li>Thing three</li>
         </ul>
         <p>Here is a thumbnail image whose size was set by script.</p>
-        <p>
-          <img class="thumb" src="https://picsum.photos/800/600" id="bigshot" />
-        </p>
+        <p><img class="thumb" src="https://picsum.photos/800/600" id="bigshot" /></p>
       </div>
     </main>
     <script
@@ -108,6 +106,7 @@
       // Here, I take the <h2> and repeat it inside every element of class "container"
       $(".container").prepend($("h2"));
       // File this under "Just because you can do a thing does not mean that you should." Repeating the same heading a bunch on the same page is a pretty awful idea
+$(".container").append($('<p><a href="#top">));
       // Working with specific IDs is best. Here I'm using IDs to find a specific div and add a specific <h3> that I can access and change
       $("#div1").append("<h3 id='div1h3'>");
       $("#div1h3").attr("class", "badge bg-primary");
@@ -130,29 +129,20 @@
 
       // Now add some text to the strong container inside <p id="three">
       $("p#three strong").append(
-        document.createTextNode(
-          "Text for the third container. Third time's the charm!"
-        )
-      );
-      $(".container").append($('<p><a href="#top">Return to top of page</a>'));
-
-      $("img#bigshot").after(
-        "<p>Some text after the image, thanks to Javascript</p>"
+        document.createTextNode("Text for the third container. Third time's the charm!")
       );
 
-      $("img#bigshot").before(
-        "<p>Some text before the image, thanks to Javascript</p>"
-      );
-      for (x = 0; x < 4; x++) {
-       // $("img#bigshot").after('<h3 id="heading[i]">');
-      }
-      // for each item in the list, set the background of the first paragraph to be red
-      // still working on this! It doesn't work as expected yet
-      // $("li").add(document.getElementsByTagName("p")[0]).css("background-color", "red");
+      $("img#bigshot").after("<p>Some text after the image, thanks to Javascript</p>");
+
+      $("img#bigshot").before("<p>Some text before the image, thanks to Javascript</p>");
+
+      // for each item in the list, set the background of the first paragraph to be red    
+    // still working on this! It doesn't work as expected yet  
+    // $("li").add(document.getElementsByTagName("p")[0]).css("background-color", "red");
 
       //$("button").click(function () {
-
-      $("img.thumb").attr("width", "200");
+     
+        $("img.thumb").attr("width", "500");
       // turns <img class="thumb"> into <img class="thumb" width="500" />
       // });
     </script>

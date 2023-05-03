@@ -23,8 +23,8 @@
     <title>Writing HTML with Javascript</title>
   </head>
   <body>
-    <header id="top"></header>
-    <main>
+    <header></header>
+    <main >
       <h2>Some examples</h2>
       <div class="container border p-2 m-2" id="div1"></div>
       <div class="container border p-2 m-2" id="div2">
@@ -108,7 +108,7 @@
       // Here, I take the <h2> and repeat it inside every element of class "container"
       $(".container").prepend($("h2"));
       // File this under "Just because you can do a thing does not mean that you should." Repeating the same heading a bunch on the same page is a pretty awful idea
-      // Working with specific IDs is best. Here I'm using IDs to find a specific div and add a specific <h3> that I can access and change
+            // Working with specific IDs is best. Here I'm using IDs to find a specific div and add a specific <h3> that I can access and change
       $("#div1").append("<h3 id='div1h3'>");
       $("#div1h3").attr("class", "badge bg-primary");
       $("#div1h3").text("Container One");
@@ -134,7 +134,7 @@
           "Text for the third container. Third time's the charm!"
         )
       );
-      $(".container").append($('<p><a href="#top">Return to top of page</a>'));
+    $(".container").append($('<p><a href="#top">Return to top of page</a>'));
 
       $("img#bigshot").after(
         "<p>Some text after the image, thanks to Javascript</p>"
@@ -143,16 +143,14 @@
       $("img#bigshot").before(
         "<p>Some text before the image, thanks to Javascript</p>"
       );
-      for (x = 0; x < 4; x++) {
-       // $("img#bigshot").after('<h3 id="heading[i]">');
-      }
+
       // for each item in the list, set the background of the first paragraph to be red
       // still working on this! It doesn't work as expected yet
       // $("li").add(document.getElementsByTagName("p")[0]).css("background-color", "red");
 
       //$("button").click(function () {
 
-      $("img.thumb").attr("width", "200");
+      $("img.thumb").attr("width", "500");
       // turns <img class="thumb"> into <img class="thumb" width="500" />
       // });
     </script>
