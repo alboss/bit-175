@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <title>Writing HTML with Javascript</title>
+  </head>
+  <body>
+    
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"></script>
+    <script>
+  
+      // The .prependTo() method inserts the specified content as the first child 
+      // of each element in the jQuery collection 
+      // There is only one body element     
+      $("<h1>Writing HTML with Javascript</h1>").prependTo("body");
+
+      // The .prepend() method does the same thing, but 
+
+      // The .appendTo() method inserts the specified content as the last child 
+      // of each element in the jQuery collection
+      // There is only one body element
+      $("<footer><a href='https://api.jquery.com/category/manipulation/dom-insertion-inside/'>jQuery documentation for inserting into the DOM</a></footer>").appendTo("body");
+      // The appendTo() method inserts HTML elements at the end of the selected elements.
+
+   
+      //$(".container").append($("h2"));
+      // this creates h2.container because .container is an HTML class name
+      // which comes out as this HTML
+      // <h2 class="container"></h2>
+
+      //$("p#two").append(document.createTextNode("Hello"));
+      // Find <p id="two"></p> and create text inside it that says hello.
+
+      //$("p#three").append($("strong"));
+      // go find <p id="three"> and put <strong></strong> just after it.
+
+      //$("img#bigshot").after("Some text after");
+
+      //$("img#bigshot").before("Some text before");
+
+      // for each item in the list, set the background of the first paragraph to be red
+      //$("li")
+      //  .add(document.getElementsByTagName("p")[0])
+      //  .css("background-color", "red");
+
+      //$("button").click(function () {
+      //  $("img.thumb").attr("width", "500");
+        // turns <img class="thumb"> into <img class="thumb" width="500" />
+     // });
+    </script>
+  </body>
+</html>

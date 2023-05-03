@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <title>Writing HTML with Javascript</title>
+  </head>
+  <body>
+    <div class="container"></div>
+    <div class="container"></div>
+    <div class="container"></div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"></script>
+    <script>
+      // The .prepend() method inserts the specified content as the first child
+      // of _each_ element in the jQuery collection. With prepend and append, you
+      // first say where it's going, then what the content is.
+      //$("body").prepend("<h2 id='subhead1'>Some examples</h2>");
+
+      // The .prependTo() method also inserts the specified
+      // content as the first child of each element in the jQuery collection,
+      // but with .prependTo() and .appendTo(), you put the content first,
+      // then say where it's going.
+      // There is only one body element
+      $("<h1>Writing HTML with Javascript</h1>").prependTo("body");
+
+      // Notice that prepending puts it at the very top, so the last thing
+      // you prepend is going to show up first.
+
+      // The .appendTo() method inserts the specified content as the last child
+      // of each element in the jQuery collection
+      // There is only one body element, so this will work
+      $(
+        "<footer><a href='https://api.jquery.com/category/manipulation/dom-insertion-inside/'>jQuery documentation for inserting into the DOM</a></footer>"
+      ).appendTo("body");
+
+      $("footer")
+        .append("<p>")
+        .append(
+          document.createTextNode(
+            "Javascript has way too many ways to do things."
+          )
+        );
+
+      // On the other hand, the same class can occur multiple times on a page
+      // Here, I create an empty <h2> inside every element of class "container"
+      console.log("There are " + $(".container").length + " containers");
+      let containers = $(".container").length;
+
+      //for (i = 0; (i = containers); i++) {
+        $(".container").append(
+          $("h2")
+            .attr("id", "cont")
+            //.createTextNode("Container [i]")
+        );
+     // }
+
+      //$("p#two").append(document.createTextNode("Hello"));
+      // Find <p id="two"></p> and create text inside it that says hello.
+
+      //$("p#three").append($("strong"));
+      // go find <p id="three"> and put <strong></strong> just after it.
+
+      //$("img#bigshot").after("Some text after");
+
+      //$("img#bigshot").before("Some text before");
+
+      // for each item in the list, set the background of the first paragraph to be red
+      //$("li")
+      //  .add(document.getElementsByTagName("p")[0])
+      //  .css("background-color", "red");
+
+      //$("button").click(function () {
+      //  $("img.thumb").attr("width", "500");
+      // turns <img class="thumb"> into <img class="thumb" width="500" />
+      // });
+    </script>
+  </body>
+</html>

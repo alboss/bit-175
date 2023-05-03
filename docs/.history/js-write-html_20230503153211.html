@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <title>Writing HTML with Javascript</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <h2>Some examples</h2>
+      <div class="container border p-2 m-2" id="div1"></div>
+      <div class="container border p-2 m-2" id="div2">
+        <ol id="some-list">
+          <li>
+            <h4>Something</h4>
+            <p>Here is some text about whatever that was.</p>
+            <p>It must be important to have all that text.</p>
+          </li>
+          <li>
+            <h4>Something else</h4>
+            <p>This item really is something else!</p>
+            <p>Alas, we know not what matter of thing.</p>
+            <p>Boo hoo.</p>
+          </li>
+          <li id="different">
+            <h4>Something completely different</h4>
+            <p>Whatever this is, it's not like the others</p>
+            <p>Even the color of the first paragraph is not the same.</p>
+            <p>Wow.</p>
+          </li>
+        </ol>
+      </div>
+      <div class="container border p-2 m-2" id="div3">
+        <img src="https://picsum.photos/200/300" id="bigshot" />
+        <ul id="some-other-list">
+          <li>Thing one</li>
+          <li>Thing two</li>
+          <li>Thing three</li>
+        </ul>
+        <p>Here is a thumbnail image whose size was set by script.</p>
+        <p><img class="thumb" src="https://picsum.photos/800/600" id="bigshot" /></p>
+      </div>
+    </main>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"></script>
+    <script>
+      // The .prepend() method inserts the specified content as the first child
+      // of _each_ element in the jQuery collection. With prepend and append,
+      // you first say where it's going, then what the content is.
+      // There's only one <body> so this should be straightforward
+      $("body").prepend(
+        "<p>JavaScript, like everything else in software, runs from top to bottom, so something that you do earlier in the code might get changed by something further down.</p>"
+      );
+      // So, why isn't that what you see on the rendered page? It's because
+      // of this next line.
+      $("body").prepend("<p>You can use jQuery to write a lot of HTML</p>");
+      // It's another prepend to the same element (body). Since prepend puts it at the very beginning, it gets inserted ahead of the thing that got inserted at the top on line 41.
+
+      // The .prependTo() method also inserts the specified
+      // content as the first child of each element in the jQuery collection,
+      // but with .prependTo() and .appendTo(), you put the content first,
+      // then say where it's going.
+      // There is only one header element
+      $("<h1>Writing HTML with Javascript</h1>").prependTo("header");
+
+      // Notice that prepending puts it at the very top, so the last thing
+      // you prepend is going to show up first.
+
+      // The .appendTo() method inserts the specified content as the last child
+      // of each element in the jQuery collection
+      // There is only one body element, so this will work
+      $(
+        "<footer><a href='https://api.jquery.com/category/manipulation/dom-insertion-inside/'>jQuery documentation for inserting into the DOM</a></footer>"
+      ).appendTo("body");
+
+      // You can also get the same result using .append()
+      $("footer")
+        .append("<p>")
+        .append(
+          document.createTextNode(
+            "Javascript has way too many ways to do things."
+          )
+        );
+
+      // On the other hand, the same class can occur multiple times on a page
+      // Here, I take the <h2> and repeat it inside every element of class "container"
+      $(".container").prepend($("h2"));
+      // File this under "Just because you can do a thing does not mean that you should." Repeating the same heading a bunch on the same page is a pretty awful idea
+
+      // Working with specific IDs is best. Here I'm using IDs to find a specific div and add a specific <h3> that I can access and change
+      $("#div1").append("<h3 id='div1h3'>");
+      $("#div1h3").attr("class", "badge bg-primary");
+      $("#div1h3").text("Container One");
+
+      // On the other hand, the same class can occur multiple times on a page
+      // Here, I create an empty <h2> inside every element of class "container"
+      console.log("There are " + $(".container").length + " containers");
+
+      $("#div2").append('<p id="two">');
+      $("p#two").append(
+        document.createTextNode("Hello, and welcome to the second container.")
+      );
+      // Find <p id="two"></p> and create text inside it.
+
+      $("#div3").append('<p id="three">');
+
+      // go find <p id="three"> and put <strong></strong> just after it.
+      $("p#three").append($("<strong>"));
+
+      // Now add some text to the strong container inside <p id="three">
+      $("p#three strong").append(
+        document.createTextNode("Text for the third container. Third time's the charm!")
+      );
+
+      $("img#bigshot").after("<p>Some text after the image, thanks to Javascript</p>");
+
+      $("img#bigshot").before("<p>Some text before the image, thanks to Javascript</p>");
+
+      // for each item in the list, set the background of the first paragraph to be red
+      $("li p")[0].add(document.getElementsByTagName("p")[0]).css("background-color", "red");
+
+      //$("button").click(function () {
+     
+        $("img.thumb").attr("width", "500");
+      // turns <img class="thumb"> into <img class="thumb" width="500" />
+      // });
+    </script>
+  </body>
+</html>

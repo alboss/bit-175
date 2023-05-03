@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" />
+    <title>Writing HTML with Javascript</title>
+  </head>
+  <body>
+    <h1>Writing HTML with Javascript</h1>
+
+
+    <script>
+        // Appends <b>hello</b>:
+$( "<b>hello</b>" ).appendTo( "body" );
+
+$( ".container" ).append( $( "h2" ) );
+$( "p" ).append( document.createTextNode( "Hello" ) );
+$( "p" ).append( $( "strong" ) );
+$("img").after("Some text after");
+
+$("img").before("Some text before");
+$( "li" ).add( document.getElementsByTagName( "p" )[ 0 ] )
+  .css( "background-color", "red" );
+
+  $("button").click(function(){
+  $("img").attr("width","500");
+});
+
+  </body>
+</html>

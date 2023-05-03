@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="./styles/styles.css" rel="stylesheet" type="text/css" />
+    <title>API using jQuery</title>
+  </head>
+  <body>
+    <h1>Using jQuery to work with an API</h1>
+    <p>You're not going to see all the data here; open the browser console.</p>
+    <div id="results">
+      <h2>Some games</h2>
+      <ul id="games"></ul>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"></script>
+
+    <script>
+      const gamelist = document.getElementById("games");
+      const apiKey = "42f828591e71409c9ca33a3d8fc36c37";
+      const settings = {
+        async: true,
+        crossDomain: true,
+        url: "https://rawg-video-games-database.p.rapidapi.com/games?key=42f828591e71409c9ca33a3d8fc36c37",
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "cfe18846c3msh320d52047e38980p1d5c6ajsn5777e4250276",
+          "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com",
+        },
+      };
+
+      $.ajax(settings).done(function (response) {
+        console.log(response.results);
+        for (let i = 0; i < response.results.length; i++) {
+          let gameTitle = response.results[i].name;
+          // console.log("Title is " + gameTitle);
+          $("#games").append($("li")
+          //.createTextNode(gameTitle));
+        }
+      });
+    </script>
+  </body>
+</html>
