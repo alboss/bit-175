@@ -152,22 +152,29 @@
 
       // Programatically create four different headings with different IDs and then put different text in each
       for (x = 0; x < 4; x++) {
-        // Create the headings with ID
+        console.log(x);
         $("img#bigshot").after('<h3 id="heading[i]">');
+        $("#heading1").append(
+          document.createTextNode("First image subheading")
+        );
+        $("#heading2").append(
+          document.createTextNode("Second image subheading")
+        );
+        $("#heading3").append(
+          document.createTextNode("Third image subheading")
+        );
+        $("#heading4").append(
+          document.createTextNode("Fourth image subheading")
+        );
       }
-      // Add text to each unique heading
-      $("#heading1").append(document.createTextNode("First image subheading"));
-      $("#heading2").append(document.createTextNode("Second image subheading"));
-      $("#heading3").append(document.createTextNode("Third image subheading"));
-      $("#heading4").append(document.createTextNode("Fourth image subheading"));
 
       // for each item in the list, set the background of the first paragraph to be red
       // still working on this! It doesn't work as expected yet
       // Make every <li> in the document have an aqua background-color
       $("li").css("background-color", "aqua");
 
-      // Make the very first <p> in the document have an coral background-color
-      $(document.getElementsByTagName("p")[0]).css("background-color", "coral");
+      // Make the very first <p> in the document have an aqua background-color
+      $(document.getElementsByTagName("p")[0]).css("background-color", "aqua");
 
       // make the first paragraph in every list item have a pink background-color
       $("li").find("p:nth-child(2)").css("background-color", "pink");
@@ -175,7 +182,6 @@
 
       // make the first paragraph in <li id="different"> have an olive background-color
       $("li#different").find("p:nth-child(2)").css("background-color", "olive");
-      // Again: In the element:nth-child() syntax, the child count includes sibling children of any element type; but it is considered a match only if the element at that child position matches the other components of the selector.
 
       // turn <img class="thumb"> into <img class="thumb" width="200" />
       $("img.thumb").attr("width", "200");
