@@ -1,9 +1,12 @@
 {
   "folders": [
-    {
-      "path": ".."
-    }
-  ],
+	{
+		"path": ".."
+	},
+	{
+		"path": "."
+	}
+],
   "settings": {
     "liveServer.settings.multiRootWorkspaceName": "docs",
     "cSpell.words": ["Spoonacular"]
