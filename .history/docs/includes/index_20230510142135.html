@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using Javascript to include one file inside another</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css" />
+    <style>
+      .page-parts,
+      .page-parts-body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .page-parts-nav {
+        order: -1;
+        background-color: aliceblue;
+      }
+
+      @media (min-width: 768px) {
+        .page-parts-body {
+          flex-direction: row;
+          flex: 1;
+        }
+        .page-parts-content {
+          flex: 1;
+          padding: 1em;
+        }
+        .page-parts-nav,
+        .page-parts-aside {
+          /* 12em is the width of the columns */
+          flex: 0 0 12em;
+          padding: 1em;
+        }
+        .page-parts-aside {
+          background-color: antiquewhite;
+        }
+        header,
+        footer {
+          background-color: darkolivegreen;
+          color: #fff;
+          padding: 1em;
+        }
+      }
+      footer a {
+        color: antiquewhite;
+      }
+    </style>
+  </head>
+
+  <body class="page-parts">
+    <header>
+      <h1>Using Javascript to include one file inside another</h1>
+      <p>
+        You can reuse the same content multiple times across multiple pages, by
+        way of Javascript.
+      </p>
+    </header>
+
+    <div class="page-parts-body">
+      <main class="page-parts-content">
+        <h3>Mixing unique content with reusable content</h3>
+        <p>
+          Some parts of the page might be unique to the page, and others might
+          be used in more than one place.
+        </p>
+        <p>
+          You can use &lt;div w3-include-html="..."&gt;...&lt;div&gt; and some
+          Javascript to help with this.
+        </p>
+        <p>You'll need to make sure links are relative to the server root so they'll work from different locations.</p>
+        <p>
+          Not all servers and security systems allow you to do this, though, so
+          test on the server before relying too heavily on it.
+        </p>
+        <p>
+          Full details are at
+          <a href="https://www.w3schools.com/howto/howto_html_include.asp">
+            https://www.w3schools.com/howto/howto_html_include.asp
+          </a>
+          , or you can just view the source on this page.
+        </p>
+      </main>
+      <nav class="page-parts-nav">
+        <div w3-include-html="./nav.html"></div>
+      </nav>
+      <aside class="page-parts-aside">
+        <div w3-include-html="./something-else.html"></div>
+      </aside>
+    </div>
+    <footer>
+      <div w3-include-html="/includes/footer.html"></div>
+    </footer>
+    <script src="/includes/includes.js"></script>
+    <script>
+      includeHTML();
+    </script>
+  </body>
+</html>

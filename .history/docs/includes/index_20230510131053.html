@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Using Javascript to include one file inside another</title>
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <style>
+.HolyGrail,
+.HolyGrail-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.HolyGrail-nav {
+  order: -1;
+}
+
+@media (min-width: 768px) {
+  .HolyGrail-body {
+    flex-direction: row;
+    flex: 1;
+  }
+  .HolyGrail-content {
+    flex: 1;
+  }
+  .HolyGrail-nav, .HolyGrail-ads {
+    /* 12em is the width of the columns */
+    flex: 0 0 12em;
+  }
+}
+    </style>
+  </head>
+
+  <body class="HolyGrail">
+    <header>
+      <h1>Using Javascript to include one file inside another</h1>
+      <p>
+        You can reuse the same content multiple times across multiple pages, by
+        way of Javascript.
+      </p>
+    </header>
+
+    <div class="HolyGrail-body">
+      <main class="HolyGrail-content">…</main>
+      <nav class="HolyGrail-nav">…</nav>
+      <aside class="HolyGrail-ads">…</aside>
+    </div>
+    <footer></footer>
+  </body>
+</html>

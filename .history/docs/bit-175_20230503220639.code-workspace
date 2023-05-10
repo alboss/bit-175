@@ -2,13 +2,10 @@
   "folders": [
     {
       "path": ".."
-    },
-    {
-      "path": "../.vscode"
     }
   ],
   "settings": {
-    "liveServer.settings.multiRootWorkspaceName": "bit-175",
+    "liveServer.settings.multiRootWorkspaceName": "docs",
     "cSpell.words": ["Spoonacular"]
   }
 }
