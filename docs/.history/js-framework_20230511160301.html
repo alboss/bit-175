@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Javascript framework lab</title>
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <style>
+      li {
+        margin: 0.5em;
+      }
+      code, .code {
+        background-color: black;
+        color: white;
+      }
+      code {
+         padding: .25em;
+      }
+      .code {
+        font-family: monospace;
+        font-size: 14px;
+        line-height: 1.5em;
+        padding: .5em;
+        
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Javascript framework lab</h1>
+    </header>
+
+    <main>
+      <h2>Enough talk, let's make an app</h2>
+      <ol>
+        <li>
+          Install Node.js from
+          <a href="https://nodejs.org/en/download">
+            https://nodejs.org/en/download
+          </a>
+          . That should install both Node and the Node Package Manager, aka NPM.
+        </li>
+        <li>
+          Install Vue.
+          <ul>
+            <li>
+              Open a command prompt, or use the integrated terminal inside
+              Visual Studio Code.
+            </li>
+            <li><code>npm install -g @vue/cli</code></li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            Use the command prompt to open whatever folder you want to put your
+            app into.
+          </p>
+          <p><code>cd ~/projects/bit-175/testbed</code></p>
+          <p>(That's for my directory structure. It won't work for yours.)</p>
+        </li>
+        <li>
+          <p>
+            Use the command prompt to create a new Vue application. I'm calling
+            mine "igor."
+          </p>
+          <p><code>vue create igor</code></p>
+        </li>
+        <li>
+          The command will run, and ask you to pick a preset. Just press "enter"
+          to go with the defaults.
+        </li>
+        <li>
+          After a bit, Vue will create a new directory and put some files into
+          it. Let's spin it up.
+          <ol>
+            <li><code>cd igor</code></li>
+            <li><code>npm run serve</code></li>
+            <li>
+              Open
+              <a href="http://localhost:8080/">http://localhost:8080/</a>
+              in your browser. You should see the basic Vue starter app.
+            </li>
+          </ol>
+        </li>
+        <li>
+          <p>Let's create a component.</p>
+          <ol>
+            <li>
+              Inside the src/components folder, create a new file called
+              Users.vue
+            </li>
+            <li>
+              <p>Put this code into it, and save it:</p>
+             
+                <div class="code">
+                  &lt;template&gt;<br>
+                  &nbsp;&nbsp; &lt;h3&gt;Users:&lt;/h3&gt;<br>
+                  &lt;/template&gt;<br><br>
+                  &lt;script&gt;<br>
+                  &nbsp;&nbsp;export default { <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;name: "Users", <br>
+                  &nbsp;&nbsp;};<br>
+                  &lt;/script&gt;<br><br>
+                  &lt;style&gt;<br>
+                  &nbsp;&nbsp;h3 { margin-bottom: 5%; }<br>
+                  &lt;/style&gt;
+                </div>
+             
+            </li>
+          </ol>
+        </li>
+            <li>
+              <p>
+                Set this component to be displayed in the browser.</p> 
+                <ol>
+                    <li>Go to the App.vue file </li>
+                    <li>Change the component to remove HelloWorld.vue
+                component and display Users.vue component instead.</li>
+                     <li>Your final
+                      code in this file should look like below:
+                    
+                      <div class="code">
+                        &lt;template&gt;<br>
+                        &nbsp;&nbsp; &lt;div id="app"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;Users /&gt;<br>
+                          &nbsp;&nbsp;&lt;/div&gt;<br>
+                        &lt;/template&gt;<br>
+        <br>
+                        &lt;script&gt;<br>
+                          &nbsp;&nbsp;import Users from "./components/Users.vue";<br>
+        <br>
+                          &nbsp;&nbsp;export default {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;name: "app",<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;components: {<br>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Users,<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                          &nbsp;&nbsp;};<br>
+                        &lt;/script&gt;<br>
+        <br>
+                        &lt;style&gt;<br>
+                          &nbsp;&nbsp;#app {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;font-family: "Avenir", Helvetica, Arial, sans-serif;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;-webkit-font-smoothing: antialiased;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;-moz-osx-font-smoothing: grayscale;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;color: #2c3e50;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;margin-top: 60px;<br>
+                          &nbsp;&nbsp;}<br>
+                        &lt;/style&gt;
+                      </div>
+                   </li>
+              </ol>
+            </li>
+            <li><p>Reload the app.</p>
+                <p>You should see the word "Users," centered on the page.</p>
+            </li>
+            <li>Let's add an API call.
+              <ol><li><p>I'll start by adding an easier way to get data, by installing <em>axios</em>, which simplifies things considerably.</p>
+              <code>npm install axios</code></li>
+              <li>For the data, I'm just going to use some fake data fromJSONPlaceholder website (<a href="https://jsonplaceholder.typicode.com/users/" target="_blank">https://jsonplaceholder.typicode.com/users/</a>"). You can open that link to see what the data will look like.</li>
+              <li><p>Open the Users.vue file you made earlier and, in the script section, tell it to include Axios.</p>
+                <div class="code">                
+                  &lt;script&gt;<br>
+                  &nbsp;&nbsp;import axios from 'axios';<br>
+                  &nbsp;&nbsp;export default { <br>
+                 &nbsp;&nbsp;&nbsp;&nbsp;name: "Users", <br>
+                &nbsp;&nbsp;};<br>
+                  &lt;/script&gt;<br><br>
+
+                </div></li>
+                <li><p>Are we done yet?</p>
+                <p>Good grief, no.</p>
+                <ol>
+                  <li>Let's add a data() function which will return users and set it to null for now.</li>
+                  <li>Next, we save the API response to the variable.</li>
+                  <li>Then, we create an actual API call using axios get method.</li>
+                  <li><p>The script block inside Users.vue should now end up looking like this:</p>
+                  <div class="code">
+                    &lt;script&gt;<br>
+  &nbsp;&nbsp;import axios from 'axios';<br>
+<br>
+  &nbsp;&nbsp;export default {<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;name: 'Users',<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;data() {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;users: null,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;created: function() {<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;axios<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.get('https://jsonplaceholder.typicode.com/users')<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then(res => {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.users = res.data;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&lt;/script&gt;
+                  </div>
+                  <p>If you think that looks awful, you haven't tried accessing API data the regular way.</p>
+                </li>
+              </ol>
+            </li>
+            <li><p>Display the data</p>
+            <ol>
+              <li>Let's make life easy on ourselves and just use Bootstrap.
+              <ol><li>In your project, go into the <code>public</code> folder and open <strong>index.html</strong></li>
+              <li>Add the usual Bootstrap code </li></ol></li>
+            </ol></li>
+          </ol>
+    </main>
+    <footer>
+      <p>
+        Example adapted from
+        <a
+          href="https://www.blog.duomly.com/vue-js-tutorial-how-to-create-vue-js-app-in-5-minutes/">
+          https://www.blog.duomly.com/vue-js-tutorial-how-to-create-vue-js-app-in-5-minutes/
+        </a>
+        .
+      </p>
+    </footer>
+  </body>
+</html>
