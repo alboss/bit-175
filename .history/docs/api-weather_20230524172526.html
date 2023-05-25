@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>More API</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <h1>More API practice: </h1>
+      <ol>
+        <li>
+          <p>The US government has a weather API. Details at
+            <a href="https://www.weather.gov/documentation/services-web-api">
+              https://www.weather.gov/documentation/services-web-api
+            </a></p>
+        </li>
+        <li>
+          <p>From that, I can see that <a href="https://api.weather.gov/gridpoints/SEW/130,74/forecast">https://api.weather.gov/gridpoints/SEW/130,74/forecast</a> has the current weather forecast for this area.</p>
+        </li>
+        <li>
+          <p>Looking at that data, I can see there's a section called "Properties" that has the forecasts.</p>
+        </li>
+        <li>
+          <p>In there, I can see that the first item is always the forecast for right now.</p>
+        </li>
+        <li>
+          <p>I can also see that each forecast has a name for the time period and a detailed forecast section.</p>
+        </li>
+    </ol>
+      <div class="container" id="app">
+        <h2>Today's weather</h2>
+        <p>{{ results.name}}, the forecast is: {{ results.detailedForecast }}</p>
+    </main>
+    <script>
+      const url = "https://api.weather.gov/gridpoints/SEW/130,74/forecast";
+      const { createApp } = Vue;
+      createApp({
+        data() {
+          return {
+            results: [],
+            
+          };
+        },
+        mounted() {
+          axios.get(url).then((response) => {
+            this.results = response.data.properties.periods[1]; 
+            
+          });
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

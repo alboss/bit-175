@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>More API</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <p>
+        More API practice: The US government has a weather API. Details at
+        <a href="https://www.weather.gov/documentation/services-web-api">
+          https://www.weather.gov/documentation/services-web-api
+        </a>
+      </p>
+      <p>From that, I can see that <a href="https://api.weather.gov/gridpoints/SEW/130,74/forecast">https://api.weather.gov/gridpoints/SEW/130,74/forecast</a> has the current weather for</p>
+
+      <div class="container" id="app">
+        <h3>Today's weather</h3>
+        <p>The forecast for {{ results.name}} is {{ results.detailedForecast }}
+        </p>
+    </main>
+    <script>
+      const url = "https://api.weather.gov/gridpoints/SEW/130,74/forecast";
+      const { createApp } = Vue;
+      createApp({
+        data() {
+          return {
+            results: [],
+          };
+        },
+        mounted() {
+          axios.get(url).then((response) => {
+            this.results = response.data.properties.periods[1]; 
+            console.log(response.data);
+          });
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

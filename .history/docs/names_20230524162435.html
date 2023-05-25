@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Fall Guys Name Generator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <h1 class="name">
+      Name:
+      <span id="name"></span>
+    </h1>
+    <button class="btn">Generate</button>
+    <script>
+      var generatedName = null;
+
+      window.onload = function () {
+        var names1 = ["Classic", "Super"];
+        var names2 = ["Crying", "Laughing", "Weeping"];
+        var names3 = ["Skelly", "Eggbert", "Dorene"];
+        generatedName = names1[Math.floor(Math.random() * names1.length)]; + “ “ +  names2[Math.floor(Math.random() * names2.length)] + “ “ + names3[Math.floor(Math.random() * names3.length)]
+
+        document.getElementById("name").innerHTML = generatedName;
+      };
+    </script>
+  </body>
+</html>

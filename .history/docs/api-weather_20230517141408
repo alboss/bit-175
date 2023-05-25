@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <title>More API</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+        <main>
+        <p>In this example, I'm using links to Vue and Axios to connect to an API and get some current cryptocurrency values <a href="https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR" target="_blank" rel="noopener">https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR</a>, which I'm displaying via Vue.</p>
+        <div class="container" id="app">
+            <h3 class="text-center">Cryptocurrency Pricing</h3>
+            <div class="columns medium-4" v-for="(result, index) in results">
+                <div class="card">
+                    <div class="card-section">
+                        <p> {{ index }} </p>
+                    </div>
+                    <div class="card-divider">
+                        <p>$ {{ result.USD }}</p>
+                    </div>
+                    <div class="card-section">
+                        <p> &#8364 {{ result.EUR }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+       <script>
+      const url =
+        "https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH&tsyms=USD,EUR";
+      const { createApp } = Vue;
+      createApp({
+        data() {
+          return {
+            results: [],
+          };
+        },
+        mounted() {
+          axios.get(url).then((response) => {
+            this.results = response.data;
+          });
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>
